@@ -21,7 +21,7 @@ namespace DSEV.UI.Controls
             this.e배출구분.EditValueChanged += 배출구분Changed;
             this.b캠트리거리셋.Click += 캠트리거리셋;
             this.e센서리셋.IsOn = false;
-            this.e센서리셋.EditValueChanged += 센서리셋;
+            //this.e센서리셋.EditValueChanged += 센서리셋;
 
             this.e카메라.Init();
             this.e큐알장치.Init();
@@ -40,7 +40,7 @@ namespace DSEV.UI.Controls
         //public void Shown(Boolean shown) { }
         private void 강제배출Changed(object sender, EventArgs e) => Global.환경설정.강제배출 = this.e강제배출.IsOn;
         private void 배출구분Changed(object sender, EventArgs e) => Global.환경설정.양품불량 = this.e배출구분.IsOn;
-        private void 센서리셋(object sender, EventArgs e) => Global.장치통신.센서제로수행(this.e센서리셋.IsOn);
+       //private void 센서리셋(object sender, EventArgs e) => Global.장치통신.센서제로수행(this.e센서리셋.IsOn);
         private void 캠트리거리셋(object sender, EventArgs e)
         {
             if (!Utils.Confirm(this.FindForm(), "트리거 보드의 위치를 초기화 하시겠습니까?")) return;
