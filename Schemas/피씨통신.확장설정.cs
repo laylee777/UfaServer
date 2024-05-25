@@ -27,6 +27,7 @@ namespace DSEV.Schemas
             CTQ1검사 = 8,
             CTQ2검사 = 9,
             상부인슐검사 = 10,
+            CTQ1검사검사완료 = 51,
         }
 
         public enum 장치구분

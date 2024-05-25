@@ -197,7 +197,7 @@ namespace DSEV.Schemas
                     Global.오류로그(로그영역.GetString(), "결과계산", $"[{(Int32)Global.환경설정.선택모델}.{검사코드}] 해당 검사가 없습니다.", false);
                     return null;
                 }
-                검사.결과계산();
+                //검사.결과계산();
                 Debug.WriteLine("수량추가전");
                 Global.모델자료.수량추가(검사.모델구분, 검사.측정결과);
                 Debug.WriteLine("수량추가후");
@@ -206,7 +206,7 @@ namespace DSEV.Schemas
             else
             {
                 검사 = this.수동검사;
-                검사.결과계산();
+                //검사.결과계산();
             }
 
             Debug.WriteLine("결과계산완료");

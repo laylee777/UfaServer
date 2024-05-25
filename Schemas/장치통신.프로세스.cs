@@ -323,7 +323,7 @@ namespace DSEV.Schemas
                 {
 
                     Global.피씨통신.CTQ1검사(CTQ1검사번호);
-                    this.CTQ검사1촬영완료신호 = true;
+                    //this.CTQ검사1촬영완료신호 = true;
                     
                 })
                 { Priority = ThreadPriority.Highest }.Start();
@@ -369,6 +369,13 @@ namespace DSEV.Schemas
             }
         }
 
+        public void CTQ1촬영완료신호켜기()
+        {
+            
+            this.CTQ검사1촬영완료신호 = true;
+            Debug.WriteLine("CTQ검사1촬영완료신호켬");
+        }
+
         // 최종 검사 결과 보고
         private void 검사결과전송()
         {
@@ -377,8 +384,8 @@ namespace DSEV.Schemas
 
             Global.모델자료.선택모델.검사종료(검사번호);
             
-            검사결과 검사 = Global.검사자료.검사항목찾기(검사번호);
-
+            //검사결과 검사 = Global.검사자료.검사항목찾기(검사번호);
+            검사결과 검사 = Global.검사자료.검사결과계산(검사번호);
             // 강제배출
             Debug.WriteLine("검사결과 강제배출 확인중");
             if (Global.환경설정.강제배출)

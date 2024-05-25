@@ -30,16 +30,20 @@ namespace DSEV.Schemas
 
         private void 자료수신(Object sender, Data data)
         {
+            Debug.WriteLine("ccc");
             try
             {
                 if (data == null) throw new Exception();
+                Debug.WriteLine("ddd");
                 if (data.명령구분 == 명령구분.연결종료)
                 {
                     this.통신장치?.Disconnect();
                     Global.정보로그(로그영역, "연결종료", "클라이언트의 연결이 종료되었습니다.", true);
                 }
+               // Debug.WriteLine("fff");
                 else if (data.명령구분 == 명령구분.검사결과) this.결과적용(data);
                 else if (data.명령구분 == 명령구분.검사설정) this.설정적용(data);
+                else if (data.명령구분 == 명령구분.CTQ1검사검사완료) this.CTQ촬영완료전달();
             }
             catch (Exception ex)
             {
@@ -135,6 +139,11 @@ namespace DSEV.Schemas
                 Global.오류로그("검사설정", "설정수신", $"[{data.검사번호}] 설정정보가 올바르지 않습니다. {ex.Message}", true);
                 return false;
             }
+        }
+
+        private void CTQ촬영완료전달()
+        {
+            Global.장치통신.CTQ1촬영완료신호켜기();
         }
     }
 }
