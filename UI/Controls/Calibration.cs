@@ -22,6 +22,9 @@ namespace DSEV.UI.Controls
             b검색.ImageOptions.SvgImage = Resources.GetSvgImage(SvgImageType.검색);
             this.b검색.Click += B검색_Click;
 
+
+            this.b데이터추출.Click += B데이터추출_Click;
+
             this.GridView1.Init(this.barManager1);
             this.GridView1.AddDeleteMenuItem(정보삭제);
             this.GridView1.AddSelectPopMenuItems();
@@ -29,6 +32,13 @@ namespace DSEV.UI.Controls
             this.GridView1.OptionsView.ColumnAutoWidth = false;
             this.GridControl1.DataSource = Global.캘리브;
         }
+
+        private void B데이터추출_Click(object sender, EventArgs e)
+        {
+            Global.검사자료.검사일시추출실행((int)this.e반복횟수.Value, (int)this.e제품갯수.Value);
+
+        }
+
         public void Close() { }
 
         public void BestFit() => this.GridView1.BestFitColumns();

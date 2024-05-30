@@ -108,6 +108,24 @@ namespace DSEV.Schemas
         [JsonIgnore]
         public Boolean 양품불량 { get; set; } = true;
 
+        // 추가 section
+        [JsonIgnore]
+        public Boolean 강제레이져각인 { get; set; } = false;
+        [JsonIgnore]
+        public Boolean 레이져각인양품불량 { get; set; } = false;
+
+        [JsonIgnore]
+        public Boolean 강제검증 { get; set; } = false;
+        [JsonIgnore]
+        public Boolean 검증양품불량 { get; set; } = false;
+
+        [JsonIgnore]
+        public Boolean 강제라벨부착 { get; set; } = false;
+        [JsonIgnore]
+        public Boolean 라벨부착양품불량 { get; set; } = false;
+
+
+
         [JsonIgnore]
         public String Format { get { return "#,0." + String.Empty.PadLeft(this.결과자릿수, '0'); } }
         [JsonIgnore]

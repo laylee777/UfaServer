@@ -94,7 +94,7 @@ namespace DSEV
             {
                 try {
                     Debug.WriteLine("D눌림^^");
-                    Global.센서제어.ReadValues(센서컨트롤러.컨트롤러1, 999);
+                    //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러1, 999);
                     Global.센서제어.ReadValues(센서컨트롤러.컨트롤러2, 999);
                     Global.센서제어.ReadValues(센서컨트롤러.컨트롤러3, 999);
                 } 
@@ -103,9 +103,9 @@ namespace DSEV
                     Global.오류로그("Testing", "센서제어", a.Message, true);
                 }
                 //Debug.WriteLine("D눌림^^");
-                Global.센서제어.ReadValues(센서컨트롤러.컨트롤러1, 999);
-                Global.센서제어.ReadValues(센서컨트롤러.컨트롤러2, 999);
-                Global.센서제어.ReadValues(센서컨트롤러.컨트롤러3, 999);
+                //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러1, 999);
+                //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러2, 999);
+                //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러3, 999);
                 //Global.레이져마킹제어.레이져마킹시작(25);
                 //Global.그랩제어.Active(카메라구분.Cam02);
                 //Global.그랩제어.Active(카메라구분.Cam03);

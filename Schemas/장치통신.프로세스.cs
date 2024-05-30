@@ -74,7 +74,7 @@ namespace DSEV.Schemas
             if (!this.내부인슐높이촬영트리거신호 && this.내부인슐높이촬영완료신호) this.내부인슐높이촬영완료신호 = false;
             if (!this.상부촬영트리거신호 && this.상부촬영완료신호) this.상부촬영완료신호 = false;
             if (!this.CTQ검사1촬영트리거신호 && this.CTQ검사1촬영완료신호) this.CTQ검사1촬영완료신호 = false;
-            if (!this.CTQ검사2촬영트리거신호 && this.CTQ검사2촬영완료신호) this.CTQ검사2촬영완료신호 = false;
+            //if (!this.CTQ검사2촬영트리거신호 && this.CTQ검사2촬영완료신호) this.CTQ검사2촬영완료신호 = false;
             if (!this.상부인슐폭촬영트리거신호 && this.상부인슐폭촬영완료신호) this.상부인슐폭촬영완료신호 = false;
             if (!this.바닥평면트리거신호 && this.바닥평면확인완료신호) this.바닥평면확인완료신호 = false;
             if (!this.하부촬영트리거신호 && this.하부촬영완료신호) this.하부촬영완료신호 = false;
@@ -123,7 +123,7 @@ namespace DSEV.Schemas
             else if (구분 == 정보주소.내부인슐높이촬영트리거) index = this.내부인슐촬영번호;
             else if (구분 == 정보주소.상부촬영트리거) index = this.상부촬영번호;
             else if (구분 == 정보주소.CTQ검사1촬영트리거) index = this.CTQ1촬영번호;
-            else if (구분 == 정보주소.CTQ검사2촬영트리거) index = this.CTQ2촬영번호;
+            //else if (구분 == 정보주소.CTQ검사2촬영트리거) index = this.CTQ2촬영번호;
             else if (구분 == 정보주소.상부인슐폭촬영트리거) index = this.상부인슐폭촬영번호;
             else if (구분 == 정보주소.바닥평면트리거) index = this.평탄도측정번호;
             else if (구분 == 정보주소.하부촬영트리거) index = this.하부표면검사번호;
@@ -254,7 +254,6 @@ namespace DSEV.Schemas
                         센서자료.Add((센서항목)i, Single.Parse(mergedValues[i]) / 1000);
                     }
 
-
                     this.바닥평면확인완료신호 = true;
                     Global.검사자료.평탄검사수행(검사번호, 센서자료);
                 }
@@ -278,7 +277,7 @@ namespace DSEV.Schemas
             Int32 내부인슐거리검사번호 = this.검사위치번호(정보주소.내부인슐높이촬영트리거);
             Int32 상부표면검사번호 = this.검사위치번호(정보주소.상부촬영트리거);
             Int32 CTQ1검사번호 = this.검사위치번호(정보주소.CTQ검사1촬영트리거);
-            Int32 CTQ2검사번호 = this.검사위치번호(정보주소.CTQ검사2촬영트리거);
+            //Int32 CTQ2검사번호 = this.검사위치번호(정보주소.CTQ검사2촬영트리거);
             Int32 상부인슐폭검사번호 = this.검사위치번호(정보주소.상부인슐폭촬영트리거);
 
             //동시 신호임
@@ -294,7 +293,6 @@ namespace DSEV.Schemas
                     Global.검사자료.검사시작(제품투입);
                     Global.피씨통신.검사시작(제품투입);
                     Debug.WriteLine("검사자료 검사시작");
-
 
                     //추후 mes 용으로 수정
                     this.제품투입결과OK신호= true;
@@ -321,22 +319,8 @@ namespace DSEV.Schemas
             {
                 new Thread(() =>
                 {
-
                     Global.피씨통신.CTQ1검사(CTQ1검사번호);
                     //this.CTQ검사1촬영완료신호 = true;
-                    
-                })
-                { Priority = ThreadPriority.Highest }.Start();
-            }
-
-            if (CTQ2검사번호 > 0)
-            {
-                new Thread(() =>
-                {
-
-                    Global.피씨통신.CTQ2검사(CTQ2검사번호);
-                    this.CTQ검사2촬영완료신호 = true;
-
                 })
                 { Priority = ThreadPriority.Highest }.Start();
             }
@@ -353,15 +337,16 @@ namespace DSEV.Schemas
                 }).Start();
             }
 
-
             //측면이랑 하부검사를 하부 하나로 동시에 받기로 함.
             if (하부표면검사번호 > 0)
             {
                 new Thread(() =>
                 {
                     Global.피씨통신.측면검사(하부표면검사번호);
+                    
                     Global.조명제어.TurnOn(카메라구분.Cam01);
                     Global.그랩제어.Active(카메라구분.Cam01);
+
                     this.하부촬영완료신호 = true;
                     this.측면촬영완료신호 = true;
                 })
@@ -371,9 +356,9 @@ namespace DSEV.Schemas
 
         public void CTQ1촬영완료신호켜기()
         {
-            
             this.CTQ검사1촬영완료신호 = true;
-            Debug.WriteLine("CTQ검사1촬영완료신호켬");
+            Debug.WriteLine($"{Utils.FormatDate(DateTime.Now, "{0:HH:mm:ss.fff}")}", "CTQ검사1촬영완료신호켬");
+            //Debug.WriteLine("CTQ검사1촬영완료신호켬");
         }
 
         // 최종 검사 결과 보고
@@ -386,12 +371,12 @@ namespace DSEV.Schemas
             
             //검사결과 검사 = Global.검사자료.검사항목찾기(검사번호);
             검사결과 검사 = Global.검사자료.검사결과계산(검사번호);
+            
             // 강제배출
             Debug.WriteLine("검사결과 강제배출 확인중");
             if (Global.환경설정.강제배출)
             {
                 결과전송(Global.환경설정.양품불량);
-
                 Global.검사자료.검사완료알림함수(검사);
                 return;
             }

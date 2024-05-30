@@ -199,6 +199,33 @@ namespace DSEV.Schemas
         public override Boolean Save(조명정보 정보) => false; // 커맨드가 있는지 모름
         public override Boolean TurnOn(조명정보 정보) => SendCommand($"{정보.카메라} On", $"{(Int32)정보.채널 - 1}o");//{this.밝기변환(정보.밝기).ToString("d4")}
         public override Boolean TurnOff(조명정보 정보) => SendCommand($"{정보.카메라} Off", $"{(Int32)정보.채널 - 1}f");//0000
+
+        //사진찍는 순서로 변경함. 해당부분
+        public void TurnOnAll()
+        {
+            SendCommand($"CTQ Camera On", $"7o");
+            SendCommand($"CTQ Camera On", $"8o");
+            SendCommand($"CTQ Camera On", $"1o");
+            SendCommand($"CTQ Camera On", $"4o");
+            SendCommand($"CTQ Camera On", $"3o");
+            SendCommand($"CTQ Camera On", $"6o");
+            SendCommand($"CTQ Camera On", $"2o");
+            SendCommand($"CTQ Camera On", $"5o");
+        }
+
+        public void TurnOffAll()
+        {
+            SendCommand($"CTQ Camera On", $"0f");
+            SendCommand($"CTQ Camera On", $"1f");
+            SendCommand($"CTQ Camera On", $"2f");
+            SendCommand($"CTQ Camera On", $"3f");
+            SendCommand($"CTQ Camera On", $"4f");
+            SendCommand($"CTQ Camera On", $"5f");
+            SendCommand($"CTQ Camera On", $"6f");
+            SendCommand($"CTQ Camera On", $"7f");
+        }
+
+
     }
 
 
