@@ -3,6 +3,8 @@ using DevExpress.XtraEditors;
 using System;
 using DSEV.Schemas;
 using DevExpress.Utils.Extensions;
+using DevExpress.XtraRichEdit.Import.OpenXml;
+using System.Diagnostics;
 
 namespace DSEV.UI.Controls
 {
@@ -27,6 +29,14 @@ namespace DSEV.UI.Controls
             this.e강제라벨부착.IsOn = Global.환경설정.강제라벨부착;
             this.e라벨부착구분.IsOn = Global.환경설정.라벨부착양품불량;
 
+
+
+            this.e작업번호.Value = (Decimal)Global.환경설정.레이져각인기작업번호;
+            this.e큐알각인내용.Text = Global.환경설정.레이져각인기마킹내용;
+            this.e서플라이어코드.Text = Global.환경설정.레이져각인기서플라이어코드;
+
+
+
             this.e강제배출.EditValueChanged += 강제배출Changed;
             this.e배출구분.EditValueChanged += 배출구분Changed;
 
@@ -41,8 +51,15 @@ namespace DSEV.UI.Controls
             this.e라벨부착구분.EditValueChanged += 라벨부착구분Changed;
 
 
+            this.b레이져각인세팅저장.Click += B레이져각인세팅저장_Click;
 
 
+
+           //this.e서플라이어코드.EditValueChanged += E서플라이어코드_EditValueChanged;
+
+            //this.e작업번호.EditValueChanged += E작업번호_EditValueChanged;
+
+            //this.e큐알각인내용.EditValueChanged += E큐알각인내용_EditValueChanged;
 
             this.b캠트리거리셋.Click += 캠트리거리셋;
             this.e센서리셋.IsOn = false;
@@ -52,6 +69,15 @@ namespace DSEV.UI.Controls
             this.e큐알장치.Init();
             this.e기본설정.Init();
             this.e유저관리.Init();
+        }
+
+        private void B레이져각인세팅저장_Click(object sender, EventArgs e)
+        {
+            Global.환경설정.레이져각인기마킹내용 = this.e큐알각인내용.Text;
+            Global.환경설정.레이져각인기작업번호 = (int)this.e작업번호.Value;
+            Global.환경설정.레이져각인기서플라이어코드 = this.e서플라이어코드.Text;
+            Global.환경설정.Save();
+            Debug.WriteLine("저장완료");
         }
 
         public void Close()

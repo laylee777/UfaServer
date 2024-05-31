@@ -22,6 +22,8 @@ namespace DSEV.UI.Controls
             b검색.ImageOptions.SvgImage = Resources.GetSvgImage(SvgImageType.검색);
             this.b검색.Click += B검색_Click;
 
+            this.b마스터샘플피팅.Click += B마스터샘플피팅_Click;
+
 
             this.b데이터추출.Click += B데이터추출_Click;
 
@@ -31,6 +33,13 @@ namespace DSEV.UI.Controls
             this.GridView1.OptionsBehavior.Editable = true;
             this.GridView1.OptionsView.ColumnAutoWidth = false;
             this.GridControl1.DataSource = Global.캘리브;
+        }
+
+        private void B마스터샘플피팅_Click(object sender, EventArgs e)
+        {
+            //!Utils.Confirm(this, 번역.종료확인, Localization.확인.GetString());
+            //if (!e.Cancel) this.CloseForm();
+            //throw new NotImplementedException();
         }
 
         private void B데이터추출_Click(object sender, EventArgs e)

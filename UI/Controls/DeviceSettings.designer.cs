@@ -36,6 +36,27 @@ namespace DSEV.UI.Controls
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
+            this.e강제라벨부착 = new DevExpress.XtraEditors.ToggleSwitch();
+            this.e라벨부착구분 = new DevExpress.XtraEditors.ToggleSwitch();
+            this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
+            this.e강제검증 = new DevExpress.XtraEditors.ToggleSwitch();
+            this.e검증구분 = new DevExpress.XtraEditors.ToggleSwitch();
+            this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.e강제레이져각인 = new DevExpress.XtraEditors.ToggleSwitch();
+            this.e레이져각인구분 = new DevExpress.XtraEditors.ToggleSwitch();
+            this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.e센서리셋 = new DevExpress.XtraEditors.ToggleSwitch();
             this.b캠트리거리셋 = new DevExpress.XtraEditors.SimpleButton();
             this.e배출구분 = new DevExpress.XtraEditors.ToggleSwitch();
@@ -49,34 +70,27 @@ namespace DSEV.UI.Controls
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.e큐알장치 = new DSEV.UI.Controls.QrControls();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.e기본설정 = new DSEV.UI.Controls.Config();
             this.e유저관리 = new DSEV.UI.Controls.Users();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.e강제레이져각인 = new DevExpress.XtraEditors.ToggleSwitch();
-            this.e레이져각인구분 = new DevExpress.XtraEditors.ToggleSwitch();
-            this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.e강제검증 = new DevExpress.XtraEditors.ToggleSwitch();
-            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.e검증구분 = new DevExpress.XtraEditors.ToggleSwitch();
-            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.e강제라벨부착 = new DevExpress.XtraEditors.ToggleSwitch();
-            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.e라벨부착구분 = new DevExpress.XtraEditors.ToggleSwitch();
-            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.tablePanel1 = new DevExpress.Utils.Layout.TablePanel();
+            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControl5 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.e작업번호 = new DevExpress.XtraEditors.SpinEdit();
+            this.e큐알각인내용 = new DevExpress.XtraEditors.TextEdit();
+            this.e서플라이어코드 = new DevExpress.XtraEditors.TextEdit();
+            this.b레이져각인세팅저장 = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
             this.splitContainerControl1.Panel1.SuspendLayout();
@@ -90,6 +104,33 @@ namespace DSEV.UI.Controls
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).BeginInit();
+            this.layoutControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.e강제라벨부착.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e라벨부착구분.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
+            this.layoutControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.e강제검증.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e검증구분.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
+            this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.e강제레이져각인.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e레이져각인구분.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.e센서리셋.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.e배출구분.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.e강제배출.Properties)).BeginInit();
@@ -102,37 +143,26 @@ namespace DSEV.UI.Controls
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            this.xtraTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
-            this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
-            this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
-            this.layoutControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e강제레이져각인.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e레이져각인구분.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
-            this.layoutControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e강제검증.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e검증구분.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).BeginInit();
-            this.layoutControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e강제라벨부착.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e라벨부착구분.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            this.xtraTabPage2.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).BeginInit();
+            this.tablePanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
+            this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl5)).BeginInit();
+            this.layoutControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e작업번호.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e큐알각인내용.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e서플라이어코드.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl1
@@ -173,7 +203,8 @@ namespace DSEV.UI.Controls
             this.xtraTabControl1.TabIndex = 2;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage3});
             // 
             // xtraTabPage1
             // 
@@ -210,6 +241,302 @@ namespace DSEV.UI.Controls
             this.layoutControl1.Size = new System.Drawing.Size(616, 522);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // groupControl4
+            // 
+            this.groupControl4.Controls.Add(this.layoutControl4);
+            this.groupControl4.Location = new System.Drawing.Point(12, 300);
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.Size = new System.Drawing.Size(592, 93);
+            this.groupControl4.TabIndex = 9;
+            this.groupControl4.Text = "Forced Label Sticker";
+            // 
+            // layoutControl4
+            // 
+            this.layoutControl4.Controls.Add(this.e강제라벨부착);
+            this.layoutControl4.Controls.Add(this.e라벨부착구분);
+            this.layoutControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl4.Location = new System.Drawing.Point(2, 27);
+            this.layoutControl4.Name = "layoutControl4";
+            this.layoutControl4.Root = this.layoutControlGroup6;
+            this.layoutControl4.Size = new System.Drawing.Size(588, 64);
+            this.layoutControl4.TabIndex = 0;
+            this.layoutControl4.Text = "layoutControl4";
+            // 
+            // e강제라벨부착
+            // 
+            this.e강제라벨부착.EditValue = null;
+            this.e강제라벨부착.Location = new System.Drawing.Point(97, 20);
+            this.e강제라벨부착.Name = "e강제라벨부착";
+            this.e강제라벨부착.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Default;
+            this.e강제라벨부착.Properties.OffText = "Off";
+            this.e강제라벨부착.Properties.OnText = "On";
+            this.e강제라벨부착.Size = new System.Drawing.Size(187, 22);
+            this.e강제라벨부착.StyleController = this.layoutControl4;
+            this.e강제라벨부착.TabIndex = 4;
+            // 
+            // e라벨부착구분
+            // 
+            this.e라벨부착구분.EditValue = null;
+            this.e라벨부착구분.Location = new System.Drawing.Point(381, 20);
+            this.e라벨부착구분.Name = "e라벨부착구분";
+            this.e라벨부착구분.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Default;
+            this.e라벨부착구분.Properties.OffText = "NG";
+            this.e라벨부착구분.Properties.OnText = "OK";
+            this.e라벨부착구분.Size = new System.Drawing.Size(187, 22);
+            this.e라벨부착구분.StyleController = this.layoutControl4;
+            this.e라벨부착구분.TabIndex = 4;
+            // 
+            // layoutControlGroup6
+            // 
+            this.layoutControlGroup6.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup6.GroupBordersVisible = false;
+            this.layoutControlGroup6.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem12,
+            this.layoutControlItem13});
+            this.layoutControlGroup6.Name = "layoutControlGroup6";
+            this.layoutControlGroup6.Size = new System.Drawing.Size(588, 64);
+            this.layoutControlGroup6.TextVisible = false;
+            // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem12.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.layoutControlItem12.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem12.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.layoutControlItem12.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.layoutControlItem12.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.layoutControlItem12.Control = this.e강제라벨부착;
+            this.layoutControlItem12.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem12.CustomizationFormText = "On/Off";
+            this.layoutControlItem12.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem12.MinSize = new System.Drawing.Size(204, 26);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
+            this.layoutControlItem12.Size = new System.Drawing.Size(284, 44);
+            this.layoutControlItem12.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem12.Text = "On/Off";
+            this.layoutControlItem12.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(65, 25);
+            this.layoutControlItem12.TextToControlDistance = 12;
+            // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem13.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.layoutControlItem13.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem13.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.layoutControlItem13.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.layoutControlItem13.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.layoutControlItem13.Control = this.e라벨부착구분;
+            this.layoutControlItem13.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem13.CustomizationFormText = "On/Off";
+            this.layoutControlItem13.Location = new System.Drawing.Point(284, 0);
+            this.layoutControlItem13.MinSize = new System.Drawing.Size(204, 26);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
+            this.layoutControlItem13.Size = new System.Drawing.Size(284, 44);
+            this.layoutControlItem13.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem13.Text = "NG/OK";
+            this.layoutControlItem13.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(65, 25);
+            this.layoutControlItem13.TextToControlDistance = 12;
+            // 
+            // groupControl3
+            // 
+            this.groupControl3.Controls.Add(this.layoutControl3);
+            this.groupControl3.Location = new System.Drawing.Point(12, 203);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(592, 93);
+            this.groupControl3.TabIndex = 8;
+            this.groupControl3.Text = "Forced QR Verification";
+            // 
+            // layoutControl3
+            // 
+            this.layoutControl3.Controls.Add(this.e강제검증);
+            this.layoutControl3.Controls.Add(this.e검증구분);
+            this.layoutControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl3.Location = new System.Drawing.Point(2, 27);
+            this.layoutControl3.Name = "layoutControl3";
+            this.layoutControl3.Root = this.layoutControlGroup5;
+            this.layoutControl3.Size = new System.Drawing.Size(588, 64);
+            this.layoutControl3.TabIndex = 0;
+            this.layoutControl3.Text = "layoutControl3";
+            // 
+            // e강제검증
+            // 
+            this.e강제검증.EditValue = null;
+            this.e강제검증.Location = new System.Drawing.Point(97, 20);
+            this.e강제검증.Name = "e강제검증";
+            this.e강제검증.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Default;
+            this.e강제검증.Properties.OffText = "Off";
+            this.e강제검증.Properties.OnText = "On";
+            this.e강제검증.Size = new System.Drawing.Size(187, 22);
+            this.e강제검증.StyleController = this.layoutControl3;
+            this.e강제검증.TabIndex = 4;
+            // 
+            // e검증구분
+            // 
+            this.e검증구분.EditValue = null;
+            this.e검증구분.Location = new System.Drawing.Point(381, 20);
+            this.e검증구분.Name = "e검증구분";
+            this.e검증구분.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Default;
+            this.e검증구분.Properties.OffText = "NG";
+            this.e검증구분.Properties.OnText = "OK";
+            this.e검증구분.Size = new System.Drawing.Size(187, 22);
+            this.e검증구분.StyleController = this.layoutControl3;
+            this.e검증구분.TabIndex = 4;
+            // 
+            // layoutControlGroup5
+            // 
+            this.layoutControlGroup5.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup5.GroupBordersVisible = false;
+            this.layoutControlGroup5.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem10,
+            this.layoutControlItem11});
+            this.layoutControlGroup5.Name = "Root";
+            this.layoutControlGroup5.Size = new System.Drawing.Size(588, 64);
+            this.layoutControlGroup5.TextVisible = false;
+            // 
+            // layoutControlItem10
+            // 
+            this.layoutControlItem10.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem10.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.layoutControlItem10.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem10.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.layoutControlItem10.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.layoutControlItem10.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.layoutControlItem10.Control = this.e강제검증;
+            this.layoutControlItem10.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem10.CustomizationFormText = "On/Off";
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem10.MinSize = new System.Drawing.Size(204, 26);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
+            this.layoutControlItem10.Size = new System.Drawing.Size(284, 44);
+            this.layoutControlItem10.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem10.Text = "On/Off";
+            this.layoutControlItem10.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(65, 25);
+            this.layoutControlItem10.TextToControlDistance = 12;
+            // 
+            // layoutControlItem11
+            // 
+            this.layoutControlItem11.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem11.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.layoutControlItem11.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem11.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.layoutControlItem11.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.layoutControlItem11.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.layoutControlItem11.Control = this.e검증구분;
+            this.layoutControlItem11.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem11.CustomizationFormText = "On/Off";
+            this.layoutControlItem11.Location = new System.Drawing.Point(284, 0);
+            this.layoutControlItem11.MinSize = new System.Drawing.Size(204, 26);
+            this.layoutControlItem11.Name = "layoutControlItem11";
+            this.layoutControlItem11.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
+            this.layoutControlItem11.Size = new System.Drawing.Size(284, 44);
+            this.layoutControlItem11.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem11.Text = "NG/OK";
+            this.layoutControlItem11.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(65, 25);
+            this.layoutControlItem11.TextToControlDistance = 12;
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.layoutControl2);
+            this.groupControl2.Location = new System.Drawing.Point(12, 106);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(592, 93);
+            this.groupControl2.TabIndex = 7;
+            this.groupControl2.Text = "Forced Laser Marking";
+            // 
+            // layoutControl2
+            // 
+            this.layoutControl2.Controls.Add(this.e강제레이져각인);
+            this.layoutControl2.Controls.Add(this.e레이져각인구분);
+            this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl2.Location = new System.Drawing.Point(2, 27);
+            this.layoutControl2.Name = "layoutControl2";
+            this.layoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1270, 0, 650, 400);
+            this.layoutControl2.Root = this.layoutControlGroup4;
+            this.layoutControl2.Size = new System.Drawing.Size(588, 64);
+            this.layoutControl2.TabIndex = 0;
+            this.layoutControl2.Text = "layoutControl2";
+            // 
+            // e강제레이져각인
+            // 
+            this.e강제레이져각인.EditValue = null;
+            this.e강제레이져각인.Location = new System.Drawing.Point(97, 20);
+            this.e강제레이져각인.Name = "e강제레이져각인";
+            this.e강제레이져각인.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Default;
+            this.e강제레이져각인.Properties.OffText = "Off";
+            this.e강제레이져각인.Properties.OnText = "On";
+            this.e강제레이져각인.Size = new System.Drawing.Size(187, 22);
+            this.e강제레이져각인.StyleController = this.layoutControl2;
+            this.e강제레이져각인.TabIndex = 4;
+            // 
+            // e레이져각인구분
+            // 
+            this.e레이져각인구분.EditValue = null;
+            this.e레이져각인구분.Location = new System.Drawing.Point(381, 21);
+            this.e레이져각인구분.Name = "e레이져각인구분";
+            this.e레이져각인구분.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Default;
+            this.e레이져각인구분.Properties.OffText = "NG";
+            this.e레이져각인구분.Properties.OnText = "OK";
+            this.e레이져각인구분.Size = new System.Drawing.Size(187, 22);
+            this.e레이져각인구분.StyleController = this.layoutControl2;
+            this.e레이져각인구분.TabIndex = 5;
+            // 
+            // layoutControlGroup4
+            // 
+            this.layoutControlGroup4.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup4.GroupBordersVisible = false;
+            this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem8,
+            this.layoutControlItem9});
+            this.layoutControlGroup4.Name = "Root";
+            this.layoutControlGroup4.Size = new System.Drawing.Size(588, 64);
+            this.layoutControlGroup4.TextVisible = false;
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem8.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.layoutControlItem8.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem8.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.layoutControlItem8.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.layoutControlItem8.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.layoutControlItem8.Control = this.e강제레이져각인;
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem8.MinSize = new System.Drawing.Size(204, 26);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
+            this.layoutControlItem8.Size = new System.Drawing.Size(284, 44);
+            this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem8.Text = "On/Off";
+            this.layoutControlItem8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(65, 25);
+            this.layoutControlItem8.TextToControlDistance = 12;
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem9.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.layoutControlItem9.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem9.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.layoutControlItem9.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.layoutControlItem9.Control = this.e레이져각인구분;
+            this.layoutControlItem9.Location = new System.Drawing.Point(284, 0);
+            this.layoutControlItem9.MinSize = new System.Drawing.Size(204, 26);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
+            this.layoutControlItem9.Size = new System.Drawing.Size(284, 44);
+            this.layoutControlItem9.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem9.Text = "NG/OK";
+            this.layoutControlItem9.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(65, 25);
+            this.layoutControlItem9.TextToControlDistance = 12;
             // 
             // e센서리셋
             // 
@@ -349,6 +676,33 @@ namespace DSEV.UI.Controls
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.groupControl3;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 191);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(596, 97);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.groupControl4;
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 288);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(596, 97);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.groupControl2;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 94);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(596, 97);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
+            // 
             // e큐알장치
             // 
             this.e큐알장치.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -381,328 +735,165 @@ namespace DSEV.UI.Controls
             this.e유저관리.Size = new System.Drawing.Size(620, 239);
             this.e유저관리.TabIndex = 0;
             // 
-            // groupControl2
+            // xtraTabPage3
             // 
-            this.groupControl2.Controls.Add(this.layoutControl2);
-            this.groupControl2.Location = new System.Drawing.Point(12, 106);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(592, 93);
-            this.groupControl2.TabIndex = 7;
-            this.groupControl2.Text = "Forced Laser Marking";
+            this.xtraTabPage3.Controls.Add(this.tablePanel1);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(620, 1009);
+            this.xtraTabPage3.Text = "Laser Marking";
             // 
-            // layoutControlItem5
+            // tablePanel1
             // 
-            this.layoutControlItem5.Control = this.groupControl2;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 94);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(596, 97);
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem5.TextVisible = false;
+            this.tablePanel1.Columns.AddRange(new DevExpress.Utils.Layout.TablePanelColumn[] {
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 5F)});
+            this.tablePanel1.Controls.Add(this.groupControl5);
+            this.tablePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tablePanel1.Location = new System.Drawing.Point(0, 0);
+            this.tablePanel1.Name = "tablePanel1";
+            this.tablePanel1.Padding = new System.Windows.Forms.Padding(1);
+            this.tablePanel1.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 405F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F)});
+            this.tablePanel1.Size = new System.Drawing.Size(620, 1009);
+            this.tablePanel1.TabIndex = 0;
+            this.tablePanel1.UseSkinIndents = true;
             // 
-            // groupControl3
+            // groupControl5
             // 
-            this.groupControl3.Controls.Add(this.layoutControl3);
-            this.groupControl3.Location = new System.Drawing.Point(12, 203);
-            this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(592, 93);
-            this.groupControl3.TabIndex = 8;
-            this.groupControl3.Text = "Forced QR Verification";
+            this.tablePanel1.SetColumn(this.groupControl5, 0);
+            this.groupControl5.Controls.Add(this.layoutControl5);
+            this.groupControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl5.Location = new System.Drawing.Point(3, 3);
+            this.groupControl5.Name = "groupControl5";
+            this.tablePanel1.SetRow(this.groupControl5, 0);
+            this.groupControl5.Size = new System.Drawing.Size(614, 401);
+            this.groupControl5.TabIndex = 0;
+            this.groupControl5.Text = "Marking Contents";
             // 
-            // layoutControlItem6
+            // layoutControl5
             // 
-            this.layoutControlItem6.Control = this.groupControl3;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 191);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(596, 97);
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem6.TextVisible = false;
+            this.layoutControl5.Controls.Add(this.e작업번호);
+            this.layoutControl5.Controls.Add(this.e큐알각인내용);
+            this.layoutControl5.Controls.Add(this.e서플라이어코드);
+            this.layoutControl5.Controls.Add(this.b레이져각인세팅저장);
+            this.layoutControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl5.Location = new System.Drawing.Point(2, 27);
+            this.layoutControl5.Name = "layoutControl5";
+            this.layoutControl5.Root = this.layoutControlGroup7;
+            this.layoutControl5.Size = new System.Drawing.Size(610, 372);
+            this.layoutControl5.TabIndex = 0;
+            this.layoutControl5.Text = "layoutControl5";
             // 
-            // groupControl4
+            // layoutControlGroup7
             // 
-            this.groupControl4.Controls.Add(this.layoutControl4);
-            this.groupControl4.Location = new System.Drawing.Point(12, 300);
-            this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(592, 93);
-            this.groupControl4.TabIndex = 9;
-            this.groupControl4.Text = "Forced Label Sticker";
+            this.layoutControlGroup7.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup7.GroupBordersVisible = false;
+            this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem14,
+            this.layoutControlItem15,
+            this.emptySpaceItem2,
+            this.layoutControlItem16,
+            this.layoutControlItem17});
+            this.layoutControlGroup7.Name = "layoutControlGroup7";
+            this.layoutControlGroup7.Size = new System.Drawing.Size(610, 372);
+            this.layoutControlGroup7.TextVisible = false;
             // 
-            // layoutControlItem7
+            // layoutControlItem14
             // 
-            this.layoutControlItem7.Control = this.groupControl4;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 288);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(596, 97);
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem7.TextVisible = false;
+            this.layoutControlItem14.Control = this.e작업번호;
+            this.layoutControlItem14.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem14.Name = "layoutControlItem14";
+            this.layoutControlItem14.Size = new System.Drawing.Size(590, 26);
+            this.layoutControlItem14.Text = "JOB NUMBER : ";
+            this.layoutControlItem14.TextSize = new System.Drawing.Size(83, 15);
             // 
-            // layoutControl2
+            // layoutControlItem15
             // 
-            this.layoutControl2.Controls.Add(this.e강제레이져각인);
-            this.layoutControl2.Controls.Add(this.e레이져각인구분);
-            this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl2.Location = new System.Drawing.Point(2, 27);
-            this.layoutControl2.Name = "layoutControl2";
-            this.layoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1270, 0, 650, 400);
-            this.layoutControl2.Root = this.layoutControlGroup4;
-            this.layoutControl2.Size = new System.Drawing.Size(588, 64);
-            this.layoutControl2.TabIndex = 0;
-            this.layoutControl2.Text = "layoutControl2";
+            this.layoutControlItem15.Control = this.e큐알각인내용;
+            this.layoutControlItem15.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem15.Name = "layoutControlItem15";
+            this.layoutControlItem15.Size = new System.Drawing.Size(590, 26);
+            this.layoutControlItem15.Text = "QR Contents :";
+            this.layoutControlItem15.TextSize = new System.Drawing.Size(83, 15);
             // 
-            // layoutControlGroup4
+            // emptySpaceItem2
             // 
-            this.layoutControlGroup4.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup4.GroupBordersVisible = false;
-            this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem8,
-            this.layoutControlItem9});
-            this.layoutControlGroup4.Name = "Root";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(588, 64);
-            this.layoutControlGroup4.TextVisible = false;
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 104);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(590, 248);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // layoutControlItem8
+            // layoutControlItem16
             // 
-            this.layoutControlItem8.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
-            this.layoutControlItem8.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.layoutControlItem8.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem8.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.layoutControlItem8.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.layoutControlItem8.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.layoutControlItem8.Control = this.e강제레이져각인;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem8.MinSize = new System.Drawing.Size(204, 26);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem8.Size = new System.Drawing.Size(284, 44);
-            this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem8.Text = "On/Off";
-            this.layoutControlItem8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(65, 25);
-            this.layoutControlItem8.TextToControlDistance = 12;
+            this.layoutControlItem16.Control = this.e서플라이어코드;
+            this.layoutControlItem16.Location = new System.Drawing.Point(0, 52);
+            this.layoutControlItem16.Name = "layoutControlItem16";
+            this.layoutControlItem16.Size = new System.Drawing.Size(590, 26);
+            this.layoutControlItem16.Text = "Supplier Code :";
+            this.layoutControlItem16.TextSize = new System.Drawing.Size(83, 15);
             // 
-            // layoutControlItem9
+            // e작업번호
             // 
-            this.layoutControlItem9.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
-            this.layoutControlItem9.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.layoutControlItem9.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem9.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.layoutControlItem9.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.layoutControlItem9.Control = this.e레이져각인구분;
-            this.layoutControlItem9.Location = new System.Drawing.Point(284, 0);
-            this.layoutControlItem9.MinSize = new System.Drawing.Size(204, 26);
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem9.Size = new System.Drawing.Size(284, 44);
-            this.layoutControlItem9.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem9.Text = "NG/OK";
-            this.layoutControlItem9.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(65, 25);
-            this.layoutControlItem9.TextToControlDistance = 12;
+            this.e작업번호.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.e작업번호.Location = new System.Drawing.Point(107, 12);
+            this.e작업번호.Name = "e작업번호";
+            this.e작업번호.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.e작업번호.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.e작업번호.Properties.MaxValue = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.e작업번호.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.e작업번호.Size = new System.Drawing.Size(491, 22);
+            this.e작업번호.StyleController = this.layoutControl5;
+            this.e작업번호.TabIndex = 4;
             // 
-            // e강제레이져각인
+            // e큐알각인내용
             // 
-            this.e강제레이져각인.EditValue = null;
-            this.e강제레이져각인.Location = new System.Drawing.Point(97, 20);
-            this.e강제레이져각인.Name = "e강제레이져각인";
-            this.e강제레이져각인.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Default;
-            this.e강제레이져각인.Properties.OffText = "Off";
-            this.e강제레이져각인.Properties.OnText = "On";
-            this.e강제레이져각인.Size = new System.Drawing.Size(187, 22);
-            this.e강제레이져각인.StyleController = this.layoutControl2;
-            this.e강제레이져각인.TabIndex = 4;
+            this.e큐알각인내용.EditValue = "MFR01341AC";
+            this.e큐알각인내용.Location = new System.Drawing.Point(107, 38);
+            this.e큐알각인내용.Name = "e큐알각인내용";
+            this.e큐알각인내용.Size = new System.Drawing.Size(491, 22);
+            this.e큐알각인내용.StyleController = this.layoutControl5;
+            this.e큐알각인내용.TabIndex = 5;
             // 
-            // e레이져각인구분
+            // e서플라이어코드
             // 
-            this.e레이져각인구분.EditValue = null;
-            this.e레이져각인구분.Location = new System.Drawing.Point(381, 21);
-            this.e레이져각인구분.Name = "e레이져각인구분";
-            this.e레이져각인구분.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Default;
-            this.e레이져각인구분.Properties.OffText = "NG";
-            this.e레이져각인구분.Properties.OnText = "OK";
-            this.e레이져각인구분.Size = new System.Drawing.Size(187, 22);
-            this.e레이져각인구분.StyleController = this.layoutControl2;
-            this.e레이져각인구분.TabIndex = 5;
+            this.e서플라이어코드.EditValue = "B";
+            this.e서플라이어코드.Location = new System.Drawing.Point(107, 64);
+            this.e서플라이어코드.Name = "e서플라이어코드";
+            this.e서플라이어코드.Size = new System.Drawing.Size(491, 22);
+            this.e서플라이어코드.StyleController = this.layoutControl5;
+            this.e서플라이어코드.TabIndex = 6;
             // 
-            // layoutControl3
+            // b레이져각인세팅저장
             // 
-            this.layoutControl3.Controls.Add(this.e강제검증);
-            this.layoutControl3.Controls.Add(this.e검증구분);
-            this.layoutControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl3.Location = new System.Drawing.Point(2, 27);
-            this.layoutControl3.Name = "layoutControl3";
-            this.layoutControl3.Root = this.layoutControlGroup5;
-            this.layoutControl3.Size = new System.Drawing.Size(588, 64);
-            this.layoutControl3.TabIndex = 0;
-            this.layoutControl3.Text = "layoutControl3";
+            this.b레이져각인세팅저장.Location = new System.Drawing.Point(12, 90);
+            this.b레이져각인세팅저장.Name = "b레이져각인세팅저장";
+            this.b레이져각인세팅저장.Size = new System.Drawing.Size(586, 22);
+            this.b레이져각인세팅저장.StyleController = this.layoutControl5;
+            this.b레이져각인세팅저장.TabIndex = 7;
+            this.b레이져각인세팅저장.Text = "Save";
             // 
-            // layoutControlGroup5
+            // layoutControlItem17
             // 
-            this.layoutControlGroup5.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup5.GroupBordersVisible = false;
-            this.layoutControlGroup5.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem10,
-            this.layoutControlItem11});
-            this.layoutControlGroup5.Name = "Root";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(588, 64);
-            this.layoutControlGroup5.TextVisible = false;
-            // 
-            // e강제검증
-            // 
-            this.e강제검증.EditValue = null;
-            this.e강제검증.Location = new System.Drawing.Point(97, 20);
-            this.e강제검증.Name = "e강제검증";
-            this.e강제검증.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Default;
-            this.e강제검증.Properties.OffText = "Off";
-            this.e강제검증.Properties.OnText = "On";
-            this.e강제검증.Size = new System.Drawing.Size(187, 22);
-            this.e강제검증.StyleController = this.layoutControl3;
-            this.e강제검증.TabIndex = 4;
-            // 
-            // layoutControlItem10
-            // 
-            this.layoutControlItem10.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
-            this.layoutControlItem10.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.layoutControlItem10.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem10.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.layoutControlItem10.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.layoutControlItem10.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.layoutControlItem10.Control = this.e강제검증;
-            this.layoutControlItem10.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.layoutControlItem10.CustomizationFormText = "On/Off";
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem10.MinSize = new System.Drawing.Size(204, 26);
-            this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem10.Size = new System.Drawing.Size(284, 44);
-            this.layoutControlItem10.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem10.Text = "On/Off";
-            this.layoutControlItem10.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(65, 25);
-            this.layoutControlItem10.TextToControlDistance = 12;
-            // 
-            // e검증구분
-            // 
-            this.e검증구분.EditValue = null;
-            this.e검증구분.Location = new System.Drawing.Point(381, 20);
-            this.e검증구분.Name = "e검증구분";
-            this.e검증구분.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Default;
-            this.e검증구분.Properties.OffText = "NG";
-            this.e검증구분.Properties.OnText = "OK";
-            this.e검증구분.Size = new System.Drawing.Size(187, 22);
-            this.e검증구분.StyleController = this.layoutControl3;
-            this.e검증구분.TabIndex = 4;
-            // 
-            // layoutControlItem11
-            // 
-            this.layoutControlItem11.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
-            this.layoutControlItem11.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.layoutControlItem11.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem11.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.layoutControlItem11.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.layoutControlItem11.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.layoutControlItem11.Control = this.e검증구분;
-            this.layoutControlItem11.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.layoutControlItem11.CustomizationFormText = "On/Off";
-            this.layoutControlItem11.Location = new System.Drawing.Point(284, 0);
-            this.layoutControlItem11.MinSize = new System.Drawing.Size(204, 26);
-            this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem11.Size = new System.Drawing.Size(284, 44);
-            this.layoutControlItem11.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem11.Text = "NG/OK";
-            this.layoutControlItem11.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(65, 25);
-            this.layoutControlItem11.TextToControlDistance = 12;
-            // 
-            // layoutControl4
-            // 
-            this.layoutControl4.Controls.Add(this.e강제라벨부착);
-            this.layoutControl4.Controls.Add(this.e라벨부착구분);
-            this.layoutControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl4.Location = new System.Drawing.Point(2, 27);
-            this.layoutControl4.Name = "layoutControl4";
-            this.layoutControl4.Root = this.layoutControlGroup6;
-            this.layoutControl4.Size = new System.Drawing.Size(588, 64);
-            this.layoutControl4.TabIndex = 0;
-            this.layoutControl4.Text = "layoutControl4";
-            // 
-            // layoutControlGroup6
-            // 
-            this.layoutControlGroup6.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup6.GroupBordersVisible = false;
-            this.layoutControlGroup6.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem12,
-            this.layoutControlItem13});
-            this.layoutControlGroup6.Name = "layoutControlGroup6";
-            this.layoutControlGroup6.Size = new System.Drawing.Size(588, 64);
-            this.layoutControlGroup6.TextVisible = false;
-            // 
-            // e강제라벨부착
-            // 
-            this.e강제라벨부착.EditValue = null;
-            this.e강제라벨부착.Location = new System.Drawing.Point(97, 20);
-            this.e강제라벨부착.Name = "e강제라벨부착";
-            this.e강제라벨부착.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Default;
-            this.e강제라벨부착.Properties.OffText = "Off";
-            this.e강제라벨부착.Properties.OnText = "On";
-            this.e강제라벨부착.Size = new System.Drawing.Size(187, 22);
-            this.e강제라벨부착.StyleController = this.layoutControl4;
-            this.e강제라벨부착.TabIndex = 4;
-            // 
-            // layoutControlItem12
-            // 
-            this.layoutControlItem12.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
-            this.layoutControlItem12.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.layoutControlItem12.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem12.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.layoutControlItem12.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.layoutControlItem12.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.layoutControlItem12.Control = this.e강제라벨부착;
-            this.layoutControlItem12.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.layoutControlItem12.CustomizationFormText = "On/Off";
-            this.layoutControlItem12.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem12.MinSize = new System.Drawing.Size(204, 26);
-            this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem12.Size = new System.Drawing.Size(284, 44);
-            this.layoutControlItem12.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem12.Text = "On/Off";
-            this.layoutControlItem12.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(65, 25);
-            this.layoutControlItem12.TextToControlDistance = 12;
-            // 
-            // e라벨부착구분
-            // 
-            this.e라벨부착구분.EditValue = null;
-            this.e라벨부착구분.Location = new System.Drawing.Point(381, 20);
-            this.e라벨부착구분.Name = "e라벨부착구분";
-            this.e라벨부착구분.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Default;
-            this.e라벨부착구분.Properties.OffText = "NG";
-            this.e라벨부착구분.Properties.OnText = "OK";
-            this.e라벨부착구분.Size = new System.Drawing.Size(187, 22);
-            this.e라벨부착구분.StyleController = this.layoutControl4;
-            this.e라벨부착구분.TabIndex = 4;
-            // 
-            // layoutControlItem13
-            // 
-            this.layoutControlItem13.AppearanceItemCaption.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
-            this.layoutControlItem13.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.layoutControlItem13.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem13.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.layoutControlItem13.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.layoutControlItem13.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.layoutControlItem13.Control = this.e라벨부착구분;
-            this.layoutControlItem13.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.layoutControlItem13.CustomizationFormText = "On/Off";
-            this.layoutControlItem13.Location = new System.Drawing.Point(284, 0);
-            this.layoutControlItem13.MinSize = new System.Drawing.Size(204, 26);
-            this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem13.Size = new System.Drawing.Size(284, 44);
-            this.layoutControlItem13.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem13.Text = "NG/OK";
-            this.layoutControlItem13.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem13.TextSize = new System.Drawing.Size(65, 25);
-            this.layoutControlItem13.TextToControlDistance = 12;
+            this.layoutControlItem17.Control = this.b레이져각인세팅저장;
+            this.layoutControlItem17.Location = new System.Drawing.Point(0, 78);
+            this.layoutControlItem17.Name = "layoutControlItem17";
+            this.layoutControlItem17.Size = new System.Drawing.Size(590, 26);
+            this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem17.TextVisible = false;
             // 
             // DeviceSettings
             // 
@@ -724,6 +915,33 @@ namespace DSEV.UI.Controls
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            this.groupControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).EndInit();
+            this.layoutControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.e강제라벨부착.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e라벨부착구분.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
+            this.layoutControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.e강제검증.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e검증구분.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
+            this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.e강제레이져각인.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e레이져각인구분.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.e센서리셋.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.e배출구분.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.e강제배출.Properties)).EndInit();
@@ -736,37 +954,26 @@ namespace DSEV.UI.Controls
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            this.xtraTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
-            this.groupControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
-            this.groupControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
-            this.layoutControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e강제레이져각인.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e레이져각인구분.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
-            this.layoutControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e강제검증.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e검증구분.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).EndInit();
-            this.layoutControl4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e강제라벨부착.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.e라벨부착구분.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            this.xtraTabPage2.ResumeLayout(false);
+            this.xtraTabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).EndInit();
+            this.tablePanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
+            this.groupControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl5)).EndInit();
+            this.layoutControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e작업번호.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e큐알각인내용.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.e서플라이어코드.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -820,5 +1027,19 @@ namespace DSEV.UI.Controls
         private DevExpress.XtraEditors.ToggleSwitch e라벨부착구분;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private DevExpress.Utils.Layout.TablePanel tablePanel1;
+        private DevExpress.XtraEditors.GroupControl groupControl5;
+        private DevExpress.XtraLayout.LayoutControl layoutControl5;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup7;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.XtraEditors.SpinEdit e작업번호;
+        private DevExpress.XtraEditors.TextEdit e큐알각인내용;
+        private DevExpress.XtraEditors.TextEdit e서플라이어코드;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
+        private DevExpress.XtraEditors.SimpleButton b레이져각인세팅저장;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
     }
 }

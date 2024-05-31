@@ -95,8 +95,8 @@ namespace DSEV
                 try {
                     Debug.WriteLine("D눌림^^");
                     //Global.센서제어.ReadValues(센서컨트롤러.컨트롤러1, 999);
-                    Global.센서제어.ReadValues(센서컨트롤러.컨트롤러2, 999);
-                    Global.센서제어.ReadValues(센서컨트롤러.컨트롤러3, 999);
+                    Global.센서제어.ReadValues(센서컨트롤러.컨트롤러2);
+                    Global.센서제어.ReadValues(센서컨트롤러.컨트롤러3);
                 } 
                 catch(Exception a)
                 {

@@ -125,6 +125,20 @@ namespace DSEV.Schemas
         public Boolean 라벨부착양품불량 { get; set; } = false;
 
 
+        /// <summary>
+        /// 레이져 각인 세팅용
+        /// </summary>
+
+
+        [JsonProperty("LaserMarkingJobNumber")]
+        public Int32 레이져각인기작업번호 { get; set; } = 1;
+        [JsonProperty("LaserMarkingContents")]
+        public String 레이져각인기마킹내용 { get; set; } = "";
+        [JsonProperty("LaserMarkingSupplierCode")]
+        public String 레이져각인기서플라이어코드 { get; set; } = "A";
+
+
+
 
         [JsonIgnore]
         public String Format { get { return "#,0." + String.Empty.PadLeft(this.결과자릿수, '0'); } }

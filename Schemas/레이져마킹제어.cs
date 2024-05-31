@@ -82,7 +82,7 @@ namespace DSEV.Schemas
 
 
             // 마킹 내용세팅
-            this.command2 = $"WX,JOB=0001,BLK=000,CharacterString=MFR01341AC;{DateTime.Today.ToString("yyMMdd")}{검사번호.ToString("d4")}B\r";
+            this.command2 = $"WX,JOB={Global.환경설정.레이져각인기작업번호.ToString("d4")},BLK=000,CharacterString={Global.환경설정.레이져각인기마킹내용};{DateTime.Today.ToString("yyMMdd")}{검사번호.ToString("d4")}{Global.환경설정.레이져각인기서플라이어코드}\r";
             //this.command2 = $"WX,JOB=0001,BLK=000,CharacterString=MFR01341AC;240124{검사번호.ToString("d4")}B\r";
             this.commandBytes2 = encoding.GetBytes(command2);
             Stream.Write(commandBytes2, 0, commandBytes2.Length);

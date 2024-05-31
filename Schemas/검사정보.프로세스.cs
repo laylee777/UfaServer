@@ -439,12 +439,8 @@ namespace DSEV.Schemas
                 distances.Add(distance);
             }
 
-
-
             Debug.WriteLine($"{A1},{A1},{A1},{A4}", "A1A4");
             Debug.WriteLine($"{distances[0]},{distances[1]},{distances[2]},{distances[3]}, {distances[4]}, {distances[5]}, {distances[6]}, {distances[7]}, {distances[8]}", "New_a1a9");
-
-
 
             try
             {

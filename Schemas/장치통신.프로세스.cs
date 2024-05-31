@@ -169,17 +169,15 @@ namespace DSEV.Schemas
                 //큐알리딩이랑 라벨 부착 합치기
                 //검사결과 부착전검사 = Global.검사자료.검사항목찾기(검사번호);
                 Debug.WriteLine(검사.큐알등급.ToString());
-                
-                if (검사.큐알등급 > 큐알등급.C || 검사.큐알등급 < 큐알등급.A) Global.라벨부착기제어.라벨부착(검사번호);
-
-
+                if (!Global.환경설정.강제라벨부착)
+                {
+                    if (검사.큐알등급 > 큐알등급.C || 검사.큐알등급 < 큐알등급.A) Global.라벨부착기제어.라벨부착(검사번호);
+                }
+                else
+                {
+                    if (!Global.환경설정.라벨부착양품불량) Global.라벨부착기제어.라벨부착(검사번호);
+                }
                 this.검증기구동완료신호 = true;
-
-
-                //if (부착전검사.결과계산() == 결과구분.NG){
-                //    Global.라벨부착기제어.라벨부착(검사번호);
-                //}
-
             })
             { Priority = ThreadPriority.Highest }.Start();
         }
@@ -191,16 +189,6 @@ namespace DSEV.Schemas
             Int32 검사번호 = this.검사위치번호(정보주소.라벨기구동트리거);
             if (검사번호 <= 0) return;
             this.라벨기구동완료신호 = true;
-            //new Thread(() =>
-            //{
-            //    검사결과 검사 = Global.검사자료.검사항목찾기(검사번호);
-            //    if (검사.마킹전결과 == 결과구분.NG)
-            //    {
-            //        Global.라벨부착기제어.라벨부착(검사번호);
-            //    }
-            //    this.라벨기구동완료신호 = true;
-            //})
-            //{ Priority = ThreadPriority.Highest }.Start();
         }
 
         private void 레이져마킹수행()
@@ -211,12 +199,22 @@ namespace DSEV.Schemas
 
             new Thread(() =>
             {
-                검사결과 검사 = Global.검사자료.검사항목찾기(검사번호);
-                검사.결과계산();
-                if (검사.마킹전결과 == 결과구분.OK)
+
+                if (!Global.환경설정.강제레이져각인)
                 {
-                    Global.레이져마킹제어.레이져마킹시작(검사번호);
+                    검사결과 검사 = Global.검사자료.검사항목찾기(검사번호);
+                    검사.결과계산();
+                    if (검사.마킹전결과 == 결과구분.OK)
+                    {
+                        Global.레이져마킹제어.레이져마킹시작(검사번호);
+                    }
                 }
+                else
+                {
+                    if (Global.환경설정.레이져각인양품불량) Global.레이져마킹제어.레이져마킹시작(검사번호);
+                }
+
+                //Task.Delay(3000).Wait();
                 this.레이져구동완료신호 = true;
             })
             { Priority = ThreadPriority.Highest }.Start();
@@ -241,8 +239,8 @@ namespace DSEV.Schemas
                 try
                 {
                     //첫번째 항목 "M0" 제외하고 배열로 만듦
-                    string[] cont1Values = Global.센서제어.ReadValues(센서컨트롤러.컨트롤러2, 검사번호).Skip(1).ToArray();
-                    string[] cont2Values = Global.센서제어.ReadValues(센서컨트롤러.컨트롤러3, 검사번호).Skip(1).ToArray();
+                    string[] cont1Values = Global.센서제어.ReadValues(센서컨트롤러.컨트롤러2).Skip(1).ToArray();
+                    string[] cont2Values = Global.센서제어.ReadValues(센서컨트롤러.컨트롤러3).Skip(1).ToArray();
 
                     //배열을 붙임!
                     string[] mergedValues = cont1Values.Concat(cont2Values).ToArray();

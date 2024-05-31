@@ -68,7 +68,7 @@ namespace DSEV.Schemas
 
 
 
-        public string[] 센서값확인(Int32 검사번호)
+        public string[] 센서값확인()
         {
             Debug.WriteLine("변위센서 측정 시작");
 
@@ -116,7 +116,7 @@ namespace DSEV.Schemas
         public void Stop() { this.Values.ForEach(e => e.Stop()); }
 
 
-        public string[] ReadValues(센서컨트롤러 컨트롤러, Int32 검사번호) => this[컨트롤러].센서값확인(검사번호);
+        public string[] ReadValues(센서컨트롤러 컨트롤러) => this[컨트롤러].센서값확인();
         
 
     }
