@@ -569,12 +569,23 @@ namespace DSEV.Schemas
         InsulationHeightR5 = 2110,
 
 
+        //Left & Right Side 인슐레이션 유무검사
+        [Result(피씨구분.Client1, 검사그룹.Surface, 결과분류.Summary, 장치구분.Cam08, None, "IsInsulationL")]
+        IsInsulationL = 2111,
+        [Result(피씨구분.Client1, 검사그룹.Surface, 결과분류.Summary, 장치구분.Cam09, None, "IsInsulationR")]
+        IsInsulationR = 2112,
+
         //패드거리 측정 F,R
         [Result(피씨구분.Client1, 검사그룹.Etc, 결과분류.Summary, 장치구분.Cam06, None, "DistPadF")]
         DistPadF = 2201,
         [Result(피씨구분.Client1, 검사그룹.Etc, 결과분류.Summary, 장치구분.Cam07, None, "DistPadR")]
         DistPadR = 2202,
 
+        //패드유무검사
+        [Result(피씨구분.Client1, 검사그룹.Surface, 결과분류.Summary, 장치구분.Cam10, None, "ResinPadF")]
+        ResinPadF = 2203,
+        [Result(피씨구분.Client1, 검사그룹.Surface, 결과분류.Summary, 장치구분.Cam10, None, "ResinPadR")]
+        ResinPadR = 2204,
 
         //부자재 정상부착검사
         [Result(피씨구분.Client1, 검사그룹.Etc, 결과분류.Summary, 장치구분.Cam06, None, "ConditionTape1")]
@@ -585,11 +596,11 @@ namespace DSEV.Schemas
         ConditionTapeR = 5003,
 
         //부자재 색상검사
-        [Result(피씨구분.Client1, 검사그룹.Etc, 결과분류.Summary, 장치구분.Cam10, None, "ColorTapeF")]
+        [Result(피씨구분.Client1, 검사그룹.Surface, 결과분류.Summary, 장치구분.Cam10, None, "ColorTapeF")]
         ColorTapeF = 5101,
-        [Result(피씨구분.Client1, 검사그룹.Etc, 결과분류.Summary, 장치구분.Cam10, None, "ColorTapeC")]
+        [Result(피씨구분.Client1, 검사그룹.Surface, 결과분류.Summary, 장치구분.Cam10, None, "ColorTapeC")]
         ColorTapeC = 5102,
-        [Result(피씨구분.Client1, 검사그룹.Etc, 결과분류.Summary, 장치구분.Cam10, None, "ColorTapeR")]
+        [Result(피씨구분.Client1, 검사그룹.Surface, 결과분류.Summary, 장치구분.Cam10, None, "ColorTapeR")]
         ColorTapeR = 5103,
 
 

@@ -164,10 +164,8 @@ namespace DSEV.Schemas
             new Thread(() =>
             {
                 검사결과 검사 = Global.검사자료.큐알리딩수행(검사번호);
-                //this.검증기구동신호 = false;
 
                 //큐알리딩이랑 라벨 부착 합치기
-                //검사결과 부착전검사 = Global.검사자료.검사항목찾기(검사번호);
                 Debug.WriteLine(검사.큐알등급.ToString());
                 if (!Global.환경설정.강제라벨부착)
                 {
@@ -199,11 +197,11 @@ namespace DSEV.Schemas
 
             new Thread(() =>
             {
+                검사결과 검사 = Global.검사자료.검사항목찾기(검사번호);
+                검사.결과계산();
 
                 if (!Global.환경설정.강제레이져각인)
                 {
-                    검사결과 검사 = Global.검사자료.검사항목찾기(검사번호);
-                    검사.결과계산();
                     if (검사.마킹전결과 == 결과구분.OK)
                     {
                         Global.레이져마킹제어.레이져마킹시작(검사번호);
@@ -213,19 +211,11 @@ namespace DSEV.Schemas
                 {
                     if (Global.환경설정.레이져각인양품불량) Global.레이져마킹제어.레이져마킹시작(검사번호);
                 }
-
-                //Task.Delay(3000).Wait();
                 this.레이져구동완료신호 = true;
             })
             { Priority = ThreadPriority.Highest }.Start();
         }
 
-        //private Boolean 센서제로모드 = false;
-        //public void 센서제로수행(Boolean 모드)
-        //{
-        //    this.센서제로모드 = 모드;
-        //    if (!모드) 정보쓰기(정보주소.평탄센서, 0);
-        //}
         private void 평탄검사수행()
         {
             Int32 검사번호 = this.검사위치번호(정보주소.바닥평면트리거);
@@ -233,9 +223,15 @@ namespace DSEV.Schemas
 
             new Thread(() =>
             {
-
                 Debug.WriteLine("평탄검사 검사시작");
+                if (Global.환경설정.제로셋모드)
+                {
+                    Global.센서제어.SaveZeroSet(센서컨트롤러.컨트롤러2, 6);
+                    Global.센서제어.SaveZeroSet(센서컨트롤러.컨트롤러3, 7);
 
+                    Global.센서제어.DoZeroSet(센서컨트롤러.컨트롤러2, 6);
+                    Global.센서제어.DoZeroSet(센서컨트롤러.컨트롤러3, 7);
+                }
                 try
                 {
                     //첫번째 항목 "M0" 제외하고 배열로 만듦
@@ -262,9 +258,6 @@ namespace DSEV.Schemas
                 }
 
                 Debug.WriteLine("평탄검사 종료");
-
-                //this.바닥평면트리거신호 = false;
-                //if (!this.센서제로모드) this.바닥평면트리거신호 = false;
             })
             { Priority = ThreadPriority.Highest }.Start();
         }

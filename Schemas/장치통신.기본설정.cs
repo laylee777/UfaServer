@@ -57,7 +57,6 @@ namespace DSEV.Schemas
             [Address("W113")]
             결과요청트리거,
 
-
             //컴플리트 신호
             [Address("W121")]
             제품투입확인완료,
@@ -86,20 +85,17 @@ namespace DSEV.Schemas
             [Address("W133")]
             결과요청확인완료,
 
-
             //OK 신호
             [Address("W141")]
             제품투입결과OK,
             [Address("W153")]
             결과요청결과OK,
 
-
             //NG 신호
             [Address("W161")]
             제품투입결과NG,
             [Address("W173")]
             결과요청결과NG,
-
 
             //인덱스 확인주소
             [Address("W201")]
@@ -120,7 +116,6 @@ namespace DSEV.Schemas
             검사지그5,
             [Address("W209")]
             배출버퍼,
-
 
             //기타
             [Address("W300", 1000)]
@@ -158,25 +153,6 @@ namespace DSEV.Schemas
 
             주소없음,
         }
-
-        //public enum 센서항목
-        //{
-        //    A3 = 0,
-        //    a3 = 1,
-        //    a2 = 2,
-        //    A1 = 3,
-        //    a1 = 4,
-        //    a6 = 5,
-        //    a5 = 6,
-        //    a4 = 7,
-        //    a9 = 8,
-        //    A4 = 9,
-        //    a8 = 10,
-        //    a7 = 11,
-        //    A2 = 12,
-
-        //    주소없음,
-        //}
 
         private 통신자료 입출자료 = new 통신자료();
 
@@ -244,21 +220,21 @@ namespace DSEV.Schemas
 
         public Int32 제품투입번호 => this.입출자료.Get(정보주소.투입버퍼);
 
-        public Int32 내부인슐촬영번호 => this.입출자료.Get(정보주소.검사지그1);
+        public Int32 내부인슐촬영번호 => this.입출자료.Get(정보주소.투입버퍼);
 
-        public Int32 상부촬영번호 => this.입출자료.Get(정보주소.검사지그2);
+        public Int32 상부촬영번호 => this.입출자료.Get(정보주소.검사지그1);
 
         public Int32 CTQ1촬영번호 => this.입출자료.Get(정보주소.검사지그2);
 
         public Int32 CTQ2촬영번호 => this.입출자료.Get(정보주소.검사지그2);
 
-        public Int32 상부인슐폭촬영번호 => this.입출자료.Get(정보주소.검사지그3);
+        public Int32 상부인슐폭촬영번호 => this.입출자료.Get(정보주소.검사지그2);
 
         public Int32 평탄도측정번호 => this.입출자료.Get(정보주소.이송장치1);
 
-        public Int32 하부표면검사번호 => this.입출자료.Get(정보주소.이송장치2);
+        public Int32 하부표면검사번호 => this.입출자료.Get(정보주소.이송장치1);
 
-        public Int32 측면표면검사번호 => this.입출자료.Get(정보주소.이송장치2);
+        public Int32 측면표면검사번호 => this.입출자료.Get(정보주소.이송장치1);
 
         public Int32 레이져각인검사번호 => this.입출자료.Get(정보주소.검사지그4);
 
@@ -267,6 +243,36 @@ namespace DSEV.Schemas
         public Int32 라벨부착기검사번호 => this.입출자료.Get(정보주소.검사지그5);
 
         public Int32 결과요청번호 => this.입출자료.Get(정보주소.배출버퍼);
+
+
+
+
+        //24.06.06 수정 전 원본( PLC 통신 인덱스 변경 전)
+        //public Int32 제품투입번호 => this.입출자료.Get(정보주소.투입버퍼);
+
+        //public Int32 내부인슐촬영번호 => this.입출자료.Get(정보주소.검사지그1);
+
+        //public Int32 상부촬영번호 => this.입출자료.Get(정보주소.검사지그2);
+
+        //public Int32 CTQ1촬영번호 => this.입출자료.Get(정보주소.검사지그2);
+
+        //public Int32 CTQ2촬영번호 => this.입출자료.Get(정보주소.검사지그2);
+
+        //public Int32 상부인슐폭촬영번호 => this.입출자료.Get(정보주소.검사지그3);
+
+        //public Int32 평탄도측정번호 => this.입출자료.Get(정보주소.이송장치1);
+
+        //public Int32 하부표면검사번호 => this.입출자료.Get(정보주소.이송장치2);
+
+        //public Int32 측면표면검사번호 => this.입출자료.Get(정보주소.이송장치2);
+
+        //public Int32 레이져각인검사번호 => this.입출자료.Get(정보주소.검사지그4);
+
+        //public Int32 큐알검증기검사번호 => this.입출자료.Get(정보주소.검사지그5);
+
+        //public Int32 라벨부착기검사번호 => this.입출자료.Get(정보주소.검사지그5);
+
+        //public Int32 결과요청번호 => this.입출자료.Get(정보주소.배출버퍼);
 
 
 

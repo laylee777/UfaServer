@@ -91,6 +91,88 @@ namespace DSEV.Schemas
             return values;
         }
 
+
+
+
+        public Boolean ZeroSetAll(Int32 센서갯수)
+        {
+            try
+            {
+                for (int i = 0; i < 센서갯수; i++)
+                {
+                    //센서ID 는 1부터
+                    ZeroSet(i + 1);
+                }
+            }
+            catch (Exception e)
+            {
+                Global.오류로그("센서영역", "제로셋", e.Message, true);
+                return false;
+            }
+            return true;
+        }
+
+        public string[] ZeroSet(Int32 센서번호)
+        {
+            Debug.WriteLine($"{센서번호:D2} ZeroSet 시작");
+
+            // 센서에 명령어를 전송하고 응답을 받아옵니다.
+            this.command2 = $"SW,{센서번호:D2},001,+000000001\r\n";
+            this.commandBytes2 = encoding.GetBytes(command2);
+            Stream.Write(commandBytes2, 0, commandBytes2.Length);
+
+            // 센서로부터 응답을 읽어옵니다.
+            byte[] buffer = new byte[24];
+            int bytesRead = Stream.Read(buffer, 0, buffer.Length);
+            Debug.WriteLine(encoding.GetString(buffer, 0, bytesRead));
+
+            // 문자열을 ','를 기준으로 분할하여 배열로 저장
+            string[] values = encoding.GetString(buffer, 0, bytesRead).Split(',');
+
+            Debug.WriteLine($"{센서번호:D2} ZeroSet 완료");
+            return values;
+        }
+
+
+        public Boolean ZeroSetSaveMemoryAll(Int32 센서갯수)
+        {
+            try
+            {
+                for (int i = 0; i < 센서갯수; i++)
+                {
+                    //센서ID 는 1부터
+                    ZeroSetSaveMemory(i + 1);
+                }
+            }
+            catch (Exception e)
+            {
+                Global.오류로그("센서영역", "제로셋세이브", e.Message, true);
+                return false;
+            }
+            return true;
+        }
+
+
+        public string[] ZeroSetSaveMemory(Int32 센서번호)
+        {
+            Debug.WriteLine($"{센서번호:D2} ZeroSet세이브기능On 시작");
+
+            // 센서에 명령어를 전송하고 응답을 받아옵니다.
+            this.command2 = $"SW,{센서번호:D2},152,+000000001\r\n";
+            this.commandBytes2 = encoding.GetBytes(command2);
+            Stream.Write(commandBytes2, 0, commandBytes2.Length);
+
+            // 센서로부터 응답을 읽어옵니다.
+            byte[] buffer = new byte[24];
+            int bytesRead = Stream.Read(buffer, 0, buffer.Length);
+            Debug.WriteLine(encoding.GetString(buffer, 0, bytesRead));
+
+            // 문자열을 ','를 기준으로 분할하여 배열로 저장
+            string[] values = encoding.GetString(buffer, 0, bytesRead).Split(',');
+
+            Debug.WriteLine($"{센서번호:D2} ZeroSet세이브기능On 완료");
+            return values;
+        }
     }
 
 
@@ -117,7 +199,11 @@ namespace DSEV.Schemas
 
 
         public string[] ReadValues(센서컨트롤러 컨트롤러) => this[컨트롤러].센서값확인();
-        
+
+
+        public Boolean DoZeroSet(센서컨트롤러 컨트롤러, Int32 센서갯수) => this[컨트롤러].ZeroSetAll(센서갯수);
+
+        public Boolean SaveZeroSet(센서컨트롤러 컨트롤러, Int32 센서갯수) => this[컨트롤러].ZeroSetSaveMemoryAll(센서갯수);
 
     }
 

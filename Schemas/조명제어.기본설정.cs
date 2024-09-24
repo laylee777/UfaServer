@@ -203,14 +203,27 @@ namespace DSEV.Schemas
         //사진찍는 순서로 변경함. 해당부분
         public void TurnOnAll()
         {
-            SendCommand($"CTQ Camera On", $"7o");
-            SendCommand($"CTQ Camera On", $"8o");
-            SendCommand($"CTQ Camera On", $"1o");
-            SendCommand($"CTQ Camera On", $"4o");
-            SendCommand($"CTQ Camera On", $"3o");
+            //SendCommand($"CTQ Camera On", $"7o");
+            //SendCommand($"CTQ Camera On", $"8o");
+            //SendCommand($"CTQ Camera On", $"1o");
+            //SendCommand($"CTQ Camera On", $"4o");
+            //SendCommand($"CTQ Camera On", $"3o");
+            //SendCommand($"CTQ Camera On", $"6o");
+            //SendCommand($"CTQ Camera On", $"2o");
+            //SendCommand($"CTQ Camera On", $"5o");
+            //SendCommand($"CTQ Camera On", $"9o");
+            //SendCommand($"CTQ Camera On", $"10o");
+            //SendCommand($"CTQ Camera On", $"11o");
+            //SendCommand($"CTQ Camera On", $"12o");
+
             SendCommand($"CTQ Camera On", $"6o");
+            SendCommand($"CTQ Camera On", $"7o");
+            SendCommand($"CTQ Camera On", $"0o");
+            SendCommand($"CTQ Camera On", $"3o");
             SendCommand($"CTQ Camera On", $"2o");
             SendCommand($"CTQ Camera On", $"5o");
+            SendCommand($"CTQ Camera On", $"1o");
+            SendCommand($"CTQ Camera On", $"4o");
         }
 
         public void TurnOffAll()

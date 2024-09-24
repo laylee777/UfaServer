@@ -27,12 +27,21 @@ namespace DSEV.Multicam
 
         public override void Init()
         {
-            base.Init();
-            String camfile = Path.Combine(Global.환경설정.기본경로, this.CamFile);
-            MC.Create("CHANNEL", out this.Channel);
-            MC.SetParam(this.Channel, "DriverIndex", this.DriverIndex);
-            MC.SetParam(this.Channel, "Connector", this.Connector.ToString());
-            MC.SetParam(this.Channel, "CamFile", camfile);
+            //base.Init();
+            try
+            {
+                String camfile = Path.Combine(Global.환경설정.기본경로, this.CamFile);
+                MC.Create("CHANNEL", out this.Channel);
+                MC.SetParam(this.Channel, "DriverIndex", this.DriverIndex);
+                MC.SetParam(this.Channel, "Connector", this.Connector.ToString());
+                MC.SetParam(this.Channel, "CamFile", camfile);
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                Global.오류로그("카메라초기화", "바닥카메라", ex.Message, true);
+            }
+
             //MC.SetParam(this.Channel, "AcquisitionMode", this.AcquisitionMode.ToString());
             //MC.SetParam(this.Channel, "TapConfiguration", "FULL_8T8");
             //MC.SetParam(this.Channel, "TapGeometry", "1X8");

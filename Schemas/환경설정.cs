@@ -108,6 +108,9 @@ namespace DSEV.Schemas
         [JsonIgnore]
         public Boolean 양품불량 { get; set; } = true;
 
+        [JsonIgnore]
+        public Boolean 제로셋모드 { get; set; } = false;
+
         // 추가 section
         [JsonIgnore]
         public Boolean 강제레이져각인 { get; set; } = false;

@@ -63,12 +63,18 @@ namespace DSEV.UI.Controls
 
             this.b캠트리거리셋.Click += 캠트리거리셋;
             this.e센서리셋.IsOn = false;
-            //this.e센서리셋.EditValueChanged += 센서리셋;
+            this.e센서리셋.EditValueChanged += 센서제로셋Changed;
 
             this.e카메라.Init();
             this.e큐알장치.Init();
             this.e기본설정.Init();
             this.e유저관리.Init();
+        }
+
+        private void 센서제로셋Changed(object sender, EventArgs e)
+        {
+            Global.환경설정.제로셋모드 = this.e센서리셋.IsOn;
+            //Debug.WriteLine($"{Global.환경설정.제로셋모드}111");
         }
 
         private void B레이져각인세팅저장_Click(object sender, EventArgs e)
