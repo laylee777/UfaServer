@@ -678,12 +678,18 @@ namespace DSEV.Schemas
     {
         [Description("mm")]
         mm = 0,
+        [Description("pi")]
+        pi = 1,
+        [Description("um")]
+        um = 2,
+        [Description("px")]
+        px = 3,
         [Description("OK/NG")]
-        ON = 1,
+        ON = 4,
         [Description("EA")]
-        EA = 2,
+        EA = 5,
         [Description("Grade")]
-        GA = 3,
+        GA = 6,
     }
 
     public enum 큐알등급
@@ -759,6 +765,8 @@ namespace DSEV.Schemas
         public Decimal 마진값 { get; set; } = 0m;
         [NotMapped, JsonProperty("iduse"), Translation("Used", "검사"), BatchEdit(true)]
         public Boolean 검사여부 { get; set; } = true;
+        [NotMapped, JsonProperty("idasu"), Translation("AutoSettingUse", "검사"), BatchEdit(true)]
+        public Boolean 자동오프셋여부 { get; set; } = false;
 
         [NotMapped, JsonIgnore]
         public Double 검사시간 = 0;

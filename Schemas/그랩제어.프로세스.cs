@@ -115,6 +115,7 @@ namespace DSEV.Schemas
             if (this.ContainsKey(구분)) return this[구분];
             return null;
         }
+
         private 그랩장치 GetItem(String serial) => this.Values.Where(e => e.코드 == serial).FirstOrDefault();
 
         public void 그랩완료(그랩장치 장치)

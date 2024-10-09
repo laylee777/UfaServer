@@ -55,18 +55,20 @@ namespace DSEV
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            //if(e.KeyCode == Keys.H)
-            //{
-            //    Debug.WriteLine("R : 카메라전체 Ready");
+            if (e.KeyCode == Keys.H)
+            {
+                Global.검사자료.검사시작(0);
+                Debug.WriteLine("R : 카메라전체 Ready");
 
-            //}
-            //if (e.KeyCode == Keys.Q)
-            //{
-            //    Debug.WriteLine("Q눌림^^");
-            //    Global.그랩제어.Active(카메라구분.Cam01);
+            }
+            if (e.KeyCode == Keys.R)
+            {
+                Debug.WriteLine("Q눌림^^");
+                //Global.그랩제어.Active(카메라구분.Cam01);
+                Global.장치통신.출력리셋();
 
 
-            //}
+            }
             //if (e.KeyCode == Keys.W)
             //{
             //    Debug.WriteLine("W눌림^^");
@@ -168,9 +170,9 @@ namespace DSEV
             //    message.DATE_TIME = "2024-04-03 14:35:29.55808";
             //    message.BARCODE_ID = "F00395AB231;F00395AB231";
             //    message.KEY = TestIndexNum.ToString("0000");
-                
+
             //    TestIndexNum++;
-                
+
             //    Global.mes통신.자료송신(message);
 
             //    Debug.WriteLine("자료송신");
@@ -184,7 +186,7 @@ namespace DSEV
             //    message.BARCODE_ID = "F00395AB231;F00395AB231";
             //    message.KEY = TestIndexNum.ToString("0000");
             //    Global.mes통신.자료송신(message);
-                
+
 
 
             //    Debug.WriteLine("자료송신");

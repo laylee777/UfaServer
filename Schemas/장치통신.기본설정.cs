@@ -247,40 +247,7 @@ namespace DSEV.Schemas
 
 
 
-        //24.06.06 수정 전 원본( PLC 통신 인덱스 변경 전)
-        //public Int32 제품투입번호 => this.입출자료.Get(정보주소.투입버퍼);
-
-        //public Int32 내부인슐촬영번호 => this.입출자료.Get(정보주소.검사지그1);
-
-        //public Int32 상부촬영번호 => this.입출자료.Get(정보주소.검사지그2);
-
-        //public Int32 CTQ1촬영번호 => this.입출자료.Get(정보주소.검사지그2);
-
-        //public Int32 CTQ2촬영번호 => this.입출자료.Get(정보주소.검사지그2);
-
-        //public Int32 상부인슐폭촬영번호 => this.입출자료.Get(정보주소.검사지그3);
-
-        //public Int32 평탄도측정번호 => this.입출자료.Get(정보주소.이송장치1);
-
-        //public Int32 하부표면검사번호 => this.입출자료.Get(정보주소.이송장치2);
-
-        //public Int32 측면표면검사번호 => this.입출자료.Get(정보주소.이송장치2);
-
-        //public Int32 레이져각인검사번호 => this.입출자료.Get(정보주소.검사지그4);
-
-        //public Int32 큐알검증기검사번호 => this.입출자료.Get(정보주소.검사지그5);
-
-        //public Int32 라벨부착기검사번호 => this.입출자료.Get(정보주소.검사지그5);
-
-        //public Int32 결과요청번호 => this.입출자료.Get(정보주소.배출버퍼);
-
-
-
-
-        //public Int32 양불판정번호 => this.입출자료.Get(정보주소.검사지그3); // 안착 후 양불 판정
-
-        //public Int32 생산수량정보 { get => this.입출자료.Get(정보주소.생산수량); set => 정보쓰기(정보주소.생산수량, value); }
-        // 트리거 입력 시 버퍼에 입력
+        
 
         private Dictionary<정보주소, Int32> 인덱스버퍼 = new Dictionary<정보주소, Int32>();
         #endregion

@@ -42,7 +42,7 @@ namespace DSEV.Schemas
                 }
                 else if (data.명령구분 == 명령구분.검사결과) this.결과적용(data);
                 else if (data.명령구분 == 명령구분.검사설정) this.설정적용(data);
-                else if (data.명령구분 == 명령구분.CTQ1검사검사완료) this.CTQ촬영완료전달();
+                else if (data.명령구분 == 명령구분.CTQ1촬영완료) this.CTQ촬영완료전달();
             }
             catch (Exception ex)
             {

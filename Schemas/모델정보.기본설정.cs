@@ -16,6 +16,8 @@ namespace DSEV.Schemas
         None,
         [DXDescription("VDA590 UFA"), Description("VDA590 UFA")]
         VDA590UFA,
+        [DXDescription("VDA590 TPA"), Description("VDA590 TPA")]
+        VDA590TPA,
     }
 
     public class 모델정보

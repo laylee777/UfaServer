@@ -237,10 +237,7 @@ namespace DSEV.Schemas
             SendCommand($"CTQ Camera On", $"6f");
             SendCommand($"CTQ Camera On", $"7f");
         }
-
-
     }
-
 
     public class 조명정보
     {

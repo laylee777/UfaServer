@@ -23,8 +23,6 @@ namespace DSEV.UI.Controls
             this.b검색.Click += B검색_Click;
 
             this.b마스터샘플피팅.Click += B마스터샘플피팅_Click;
-
-
             this.b데이터추출.Click += B데이터추출_Click;
 
             this.GridView1.Init(this.barManager1);
@@ -44,8 +42,11 @@ namespace DSEV.UI.Controls
 
         private void B데이터추출_Click(object sender, EventArgs e)
         {
-            Global.검사자료.검사일시추출실행((int)this.e반복횟수.Value, (int)this.e제품갯수.Value);
-
+            List<string> filePath = Global.검사자료.검사일시추출실행((int)this.e반복횟수.Value, (int)this.e제품갯수.Value);
+            List<decimal> OffsetSettings = new List<decimal>();
+            Global.모델자료.선택모델.검사설정.ForEach(x => OffsetSettings.Add(x.보정값));
+            
+            Global.검사자료.알앤알문서작성(filePath, OffsetSettings);
         }
 
         public void Close() { }

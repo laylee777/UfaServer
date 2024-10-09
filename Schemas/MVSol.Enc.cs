@@ -1,5 +1,8 @@
-﻿using MvUtils;
+﻿using DevExpress.Utils.Extensions;
+using MvUtils;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
@@ -40,7 +43,9 @@ namespace DSEV.Schemas
         }
 
         #region DLL FUNCTIONS
+        //const string DLL_NAME = "mvenc_x64.dll";
         const string DLL_NAME = "mvenc_x64.dll";
+
         //const string DLL_NAME = "mvenc_x86.dll";
 
         [DllImport(DLL_NAME)]
@@ -255,7 +260,6 @@ namespace DSEV.Schemas
         {
             try
             {
-                this.Open(this.포트.ToString());
                 this.ClearEncoderPositionAll();
                 this.ClearTriggerAll();
                 Debug.WriteLine("트리거보드 초기화 완료", "트리거보드");
@@ -804,5 +808,38 @@ namespace DSEV.Schemas
             base.Dispose(disposing);
         }
         #endregion
+    }
+
+
+    public class 트리거보드제어 : Dictionary<직렬포트, Enc852>
+    {
+        public 트리거보드제어() {}
+        직렬포트[] Ports;
+
+        public void Init()
+        {
+           
+            Ports = new 직렬포트[] { 직렬포트.COM8, 직렬포트.COM9 };
+
+            try
+            {
+                Ports.ForEach(port => {
+                    Enc852 triggerBoard = new Enc852(port);
+                    triggerBoard.Open(port.ToString());
+                    this.Add(port, triggerBoard);
+                });
+                Debug.WriteLine("MvSol Open완료");
+                this.ClearAll();
+            }
+            catch (Exception ex)
+            {
+                Global.오류로그("Trigger Board", "Trigger Board Init", ex.Message, true);
+            }
+            
+        }
+
+        public void Close() => this.ForEach(트리거보드 => 트리거보드.Value.Close());
+        
+        public void ClearAll() => this.ForEach(트리거보드 => 트리거보드.Value.Clear());
     }
 }

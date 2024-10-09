@@ -13,6 +13,7 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Remote_Release|Any CPU = Remote_Release|Any CPU
 		Remote|Any CPU = Remote|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
@@ -20,18 +21,24 @@ Global
 		{4C1D513F-E601-45D8-BCCF-AA8AAD0E3426}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C1D513F-E601-45D8-BCCF-AA8AAD0E3426}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C1D513F-E601-45D8-BCCF-AA8AAD0E3426}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C1D513F-E601-45D8-BCCF-AA8AAD0E3426}.Remote_Release|Any CPU.ActiveCfg = Remote_Release|Any CPU
+		{4C1D513F-E601-45D8-BCCF-AA8AAD0E3426}.Remote_Release|Any CPU.Build.0 = Remote_Release|Any CPU
 		{4C1D513F-E601-45D8-BCCF-AA8AAD0E3426}.Remote|Any CPU.ActiveCfg = Remote|Any CPU
 		{4C1D513F-E601-45D8-BCCF-AA8AAD0E3426}.Remote|Any CPU.Build.0 = Remote|Any CPU
 		{88AD3D48-11A5-4350-8430-6C35CD85D49E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{88AD3D48-11A5-4350-8430-6C35CD85D49E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88AD3D48-11A5-4350-8430-6C35CD85D49E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88AD3D48-11A5-4350-8430-6C35CD85D49E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88AD3D48-11A5-4350-8430-6C35CD85D49E}.Remote_Release|Any CPU.ActiveCfg = Remote_Release|Any CPU
+		{88AD3D48-11A5-4350-8430-6C35CD85D49E}.Remote_Release|Any CPU.Build.0 = Remote_Release|Any CPU
 		{88AD3D48-11A5-4350-8430-6C35CD85D49E}.Remote|Any CPU.ActiveCfg = Remote|Any CPU
 		{88AD3D48-11A5-4350-8430-6C35CD85D49E}.Remote|Any CPU.Build.0 = Remote|Any CPU
 		{BDB2ED5C-4A7F-4116-B5A0-1831A1EC0624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BDB2ED5C-4A7F-4116-B5A0-1831A1EC0624}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDB2ED5C-4A7F-4116-B5A0-1831A1EC0624}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDB2ED5C-4A7F-4116-B5A0-1831A1EC0624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDB2ED5C-4A7F-4116-B5A0-1831A1EC0624}.Remote_Release|Any CPU.ActiveCfg = Remote_Release|Any CPU
+		{BDB2ED5C-4A7F-4116-B5A0-1831A1EC0624}.Remote_Release|Any CPU.Build.0 = Remote_Release|Any CPU
 		{BDB2ED5C-4A7F-4116-B5A0-1831A1EC0624}.Remote|Any CPU.ActiveCfg = Remote|Any CPU
 		{BDB2ED5C-4A7F-4116-B5A0-1831A1EC0624}.Remote|Any CPU.Build.0 = Remote|Any CPU
 	EndGlobalSection

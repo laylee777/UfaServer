@@ -52,16 +52,29 @@ namespace DSEV.Schemas
             return true;
         }
 
+        public void 출력리셋()
+        {
+            this.출력자료리셋();
+        }
+
+
         private void 장치상태확인()
         {
             if (this.입출자료.Changed(정보주소.자동수동) || this.입출자료.Changed(정보주소.시작정지))
+            {
+                    if(this.자동수동여부 && this.시작정지여부)
+                    {
+                        if (Global.트리거보드제어 != null) Global.트리거보드제어.ClearAll();
+                    }
+                    
                 this.동작상태알림?.Invoke();
+            }
         }
 
         // 검사위치 변경 확인
         private void 검사위치확인()
         {
-            Dictionary<정보주소, Int32> 변경 = this.입출자료.Changes(정보주소.제품투입트리거, 정보주소.결과요청트리거);
+            Dictionary<정보주소, Int32> 변경 = this.입출자료.Changes(정보주소.제품투입트리거, 정보주소.결과요청확인완료);
             if (변경.Count < 1) return;
 
             if (!this.제품투입트리거신호 && this.제품투입확인완료신호)
@@ -72,16 +85,15 @@ namespace DSEV.Schemas
             }
 
             if (!this.내부인슐높이촬영트리거신호 && this.내부인슐높이촬영완료신호) this.내부인슐높이촬영완료신호 = false;
-            if (!this.상부촬영트리거신호 && this.상부촬영완료신호) this.상부촬영완료신호 = false;
-            if (!this.CTQ검사1촬영트리거신호 && this.CTQ검사1촬영완료신호) this.CTQ검사1촬영완료신호 = false;
-            //if (!this.CTQ검사2촬영트리거신호 && this.CTQ검사2촬영완료신호) this.CTQ검사2촬영완료신호 = false;
-            if (!this.상부인슐폭촬영트리거신호 && this.상부인슐폭촬영완료신호) this.상부인슐폭촬영완료신호 = false;
-            if (!this.바닥평면트리거신호 && this.바닥평면확인완료신호) this.바닥평면확인완료신호 = false;
-            if (!this.하부촬영트리거신호 && this.하부촬영완료신호) this.하부촬영완료신호 = false;
-            if (!this.측면촬영트리거신호 && this.측면촬영완료신호) this.측면촬영완료신호 = false;
-            if (!this.레이져구동트리거신호 && this.레이져구동완료신호) this.레이져구동완료신호 = false;
-            if (!this.검증기구동트리거신호 && this.검증기구동완료신호) this.검증기구동완료신호 = false;
-            if (!this.라벨기구동트리거신호 && this.라벨기구동완료신호) this.라벨기구동완료신호 = false;
+            if (!this.상부촬영트리거신호        && this.상부촬영완료신호)        this.상부촬영완료신호       = false;
+            if (!this.CTQ검사1촬영트리거신호    && this.CTQ검사1촬영완료신호)    this.CTQ검사1촬영완료신호   = false;
+            if (!this.상부인슐폭촬영트리거신호   && this.상부인슐폭촬영완료신호)   this.상부인슐폭촬영완료신호  = false;
+            if (!this.바닥평면트리거신호        && this.바닥평면확인완료신호)     this.바닥평면확인완료신호   = false;
+            if (!this.하부촬영트리거신호        && this.하부촬영완료신호)        this.하부촬영완료신호       = false;
+            if (!this.측면촬영트리거신호        && this.측면촬영완료신호)        this.측면촬영완료신호       = false;
+            if (!this.레이져구동트리거신호      && this.레이져구동완료신호)       this.레이져구동완료신호     = false;
+            if (!this.검증기구동트리거신호      && this.검증기구동완료신호)       this.검증기구동완료신호     = false;
+            if (!this.라벨기구동트리거신호      && this.라벨기구동완료신호)       this.라벨기구동완료신호     = false;
 
             if (!this.결과요청트리거신호 && this.결과요청확인완료신호)
             {
@@ -265,11 +277,11 @@ namespace DSEV.Schemas
         private void 영상촬영수행()
         {
             Int32 제품투입 = this.검사위치번호(정보주소.제품투입트리거);
-            Int32 내부인슐거리검사번호 = this.검사위치번호(정보주소.내부인슐높이촬영트리거);
-            Int32 상부표면검사번호 = this.검사위치번호(정보주소.상부촬영트리거);
-            Int32 CTQ1검사번호 = this.검사위치번호(정보주소.CTQ검사1촬영트리거);
-            //Int32 CTQ2검사번호 = this.검사위치번호(정보주소.CTQ검사2촬영트리거);
-            Int32 상부인슐폭검사번호 = this.검사위치번호(정보주소.상부인슐폭촬영트리거);
+
+            Int32 내부인슐거리검사번호  = this.검사위치번호(정보주소.내부인슐높이촬영트리거);
+            Int32 상부표면검사번호     = this.검사위치번호(정보주소.상부촬영트리거);
+            Int32 CTQ1검사번호        = this.검사위치번호(정보주소.CTQ검사1촬영트리거);
+            Int32 상부인슐폭검사번호   = this.검사위치번호(정보주소.상부인슐폭촬영트리거);
 
             //동시 신호임
             Int32 하부표면검사번호 = this.검사위치번호(정보주소.하부촬영트리거);
@@ -290,20 +302,23 @@ namespace DSEV.Schemas
                     this.제품투입결과NG신호 = false;
                     this.제품투입확인완료신호 = true;
                 })
-                { Priority = ThreadPriority.AboveNormal }.Start();
+                { Priority = ThreadPriority.Highest }.Start();
                 Debug.WriteLine("PC통신 검사시작");
             }
 
             if (내부인슐거리검사번호 > 0)
             {
-                new Thread(() => { Global.피씨통신.상부인슐검사(내부인슐거리검사번호); }) { Priority = ThreadPriority.AboveNormal }.Start();
+                new Thread(() => { Global.피씨통신.상부인슐검사(내부인슐거리검사번호); }) { Priority = ThreadPriority.Highest }.Start();
                 this.내부인슐높이촬영완료신호 = true;
+                Debug.WriteLine($"트리거 인식,  내부촬영트리거(W102) : {내부인슐높이촬영트리거신호} 내부촬영완료(W122) : {내부인슐높이촬영완료신호}");
             }
 
             if (상부표면검사번호 > 0)
             {
-                new Thread(() => { Global.피씨통신.상부검사(상부표면검사번호); }) { Priority = ThreadPriority.AboveNormal }.Start();
+                new Thread(() => { Global.피씨통신.상부검사(상부표면검사번호); }) { Priority = ThreadPriority.Highest }.Start();
                 this.상부촬영완료신호 = true;
+                Debug.WriteLine($"트리거 인식,  내부촬영신호(W103) : {상부촬영트리거신호} 내부촬영신호(W123) : {상부촬영완료신호}");
+
             }
 
             if (CTQ1검사번호 > 0)
@@ -314,6 +329,8 @@ namespace DSEV.Schemas
                     //this.CTQ검사1촬영완료신호 = true;
                 })
                 { Priority = ThreadPriority.Highest }.Start();
+                //Debug.WriteLine($"트리거 인식,  내부촬영신호(W103) : {상부인슐폭촬영트리거신호} 내부촬영신호(W123) : {상부촬영완료신호}");
+
             }
 
             if (상부인슐폭검사번호 > 0)
@@ -325,23 +342,28 @@ namespace DSEV.Schemas
                     Global.그랩제어.Active(카메라구분.Cam02);
                     Global.그랩제어.Active(카메라구분.Cam03);
                     this.상부인슐폭촬영완료신호 = true;
-                }).Start();
+                })
+                { Priority = ThreadPriority.Highest }.Start();
+                //Debug.WriteLine($"트리거 인식,  상부인슐폭검사트리거(W103) : {상부인슐폭촬영트리거신호} 상부인슐폭검사트리거신호(W123) : {상부촬영완료신호}");
+
+                //Debug.WriteLine($"트리거 인식,  내부촬영신호(W103) : {상부인슐폭촬영트리거신호} 내부촬영신호(W123) : {상부촬영완료신호}");
+
             }
 
             //측면이랑 하부검사를 하부 하나로 동시에 받기로 함.
             if (하부표면검사번호 > 0)
             {
+                Global.피씨통신.측면검사(하부표면검사번호);
+
                 new Thread(() =>
                 {
-                    Global.피씨통신.측면검사(하부표면검사번호);
-                    
                     Global.조명제어.TurnOn(카메라구분.Cam01);
                     Global.그랩제어.Active(카메라구분.Cam01);
 
                     this.하부촬영완료신호 = true;
                     this.측면촬영완료신호 = true;
                 })
-                { Priority = ThreadPriority.AboveNormal }.Start();
+                { Priority = ThreadPriority.Highest }.Start();
             }
         }
 

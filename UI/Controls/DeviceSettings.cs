@@ -112,12 +112,16 @@ namespace DSEV.UI.Controls
         private void 캠트리거리셋(object sender, EventArgs e)
         {
             if (!Utils.Confirm(this.FindForm(), "트리거 보드의 위치를 초기화 하시겠습니까?")) return;
-            직렬포트[] 포트들 = new 직렬포트[] { 직렬포트.COM7 };
-            포트들.ForEach(port => {
-                Enc852 트리거보드 = new Enc852(port);
-                트리거보드.Clear();
-                트리거보드.Close();
-            });
+
+            Global.트리거보드제어.Clear();
+
+
+            //직렬포트[] 포트들 = new 직렬포트[] { 직렬포트.COM8, 직렬포트.COM9 };
+            //포트들.ForEach(port => {
+            //    Enc852 트리거보드 = new Enc852(port);
+            //    트리거보드.Clear();
+            //    트리거보드.Close();
+            //});
             Global.정보로그("트리거보드", "초기화", "초기화 되었습니다.", true);
         }
     }

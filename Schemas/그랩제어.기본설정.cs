@@ -133,6 +133,8 @@ namespace DSEV.Schemas
             if (surfaceAddr == IntPtr.Zero) { AcquisitionFinished("Failed."); return; }
             try
             {
+
+
                 if (this.UseMemoryCopy) this.CopyMemory(surfaceAddr, width, height);
                 else
                 {
@@ -141,6 +143,7 @@ namespace DSEV.Schemas
                     this.ImageHeight = height;
                 }
                 Global.그랩제어.그랩완료(this);
+
             }
             catch (Exception ex)
             {
@@ -238,6 +241,13 @@ namespace DSEV.Schemas
             Int32 nRet = this.Camera.CreateHandle(ref Device);
             if (!그랩제어.Validate($"[{this.구분}] 카메라 초기화에 실패하였습니다.", nRet, true)) return false;
             nRet = this.Camera.OpenDevice();
+            
+            //카메라 예열(Active 늦게 켜져서 트리거 보드 안먹는 현상 방지용)
+            그랩제어.Validate($"{this.구분} Active", Camera.StartGrabbing(), true);
+            그랩제어.Validate($"{this.구분} Active", Camera.StopGrabbing(), true);
+            this.Camera.ClearImageBuffer();
+            //카메라 예열완료
+            
             if (!그랩제어.Validate($"[{this.구분}] 카메라 연결 실패!", nRet, true)) return false;
             그랩제어.Validate("RegisterImageCallBackEx", this.Camera.RegisterImageCallBackEx(this.ImageCallBackDelegate, IntPtr.Zero), false);
             Global.정보로그(로그영역, "카메라 연결", $"[{this.구분}] 카메라 연결 성공!", false);
@@ -246,11 +256,14 @@ namespace DSEV.Schemas
 
         public override Boolean Active()
         {
-            this.Camera.ClearImageBuffer();
-            if(this.구분 == 카메라구분.Cam08 || this.구분 == 카메라구분.Cam09)
-            {
-                return 그랩제어.Validate($"{this.구분} Active", Camera.StartGrabbing(), false);
-            }
+            //this.Camera.ClearImageBuffer();
+            //if(this.구분 == 카메라구분.Cam08 || this.구분 == 카메라구분.Cam09)
+            //{
+            //    return 그랩제어.Validate($"{this.구분} Active", Camera.StartGrabbing(), false);
+            //}
+            //Debug.WriteLine($"{MvUtils.Utils.FormatDate(DateTime.Now, "{0:HHmmss.fff}")}", "하이크카메라");
+            //Camera.StartGrabbing();
+            //return true;
             return 그랩제어.Validate($"{this.구분} Active", Camera.StartGrabbing(), true);
         }
 

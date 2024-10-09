@@ -39,6 +39,7 @@ namespace DSEV
         public static 레이져마킹제어 레이져마킹제어;
         public static 센서제어 센서제어;
         public static MES통신 mes통신;
+        public static 트리거보드제어 트리거보드제어;
 
         //public static 샘플자료 샘플자료;
 
@@ -82,6 +83,8 @@ namespace DSEV
                 레이져마킹제어 = new 레이져마킹제어();
                 센서제어 = new 센서제어();
 
+                트리거보드제어 = new 트리거보드제어();
+
                 로그자료.Init();
                 환경설정.Init();
                 유저자료.Init();
@@ -104,6 +107,7 @@ namespace DSEV
                 레이져마킹제어.Init();
                 센서제어.Init();
 
+                트리거보드제어.Init();
                 //샘플자료 = new 샘플자료();
                 //샘플자료.Init();
 
@@ -163,6 +167,7 @@ namespace DSEV
                 레이져마킹제어.Close();
                 센서제어.Close();
 
+                트리거보드제어.Close();
 
 
                 Properties.Settings.Default.Save();

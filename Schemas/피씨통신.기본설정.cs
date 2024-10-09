@@ -26,7 +26,7 @@ namespace DSEV.Schemas
             CTQ1검사 = 8,
             CTQ2검사 = 9,
             상부인슐검사 = 10,
-            CTQ1검사검사완료 = 51,
+            CTQ1촬영완료 = 51,
         }
 
         public enum 장치구분
@@ -39,8 +39,6 @@ namespace DSEV.Schemas
             Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data)));
         public static T JsonDecoding<T>(String json) =>
             JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(Convert.FromBase64String(json)));
-
-
 
         public abstract class TcpCommunication
         {

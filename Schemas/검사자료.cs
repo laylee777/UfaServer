@@ -11,8 +11,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using static DSEV.Schemas.장치통신;
+using CsvHelper;
+using CsvHelper.Configuration;
 using System.IO;
-
+using System.Globalization;  // 여기에 추가
+using ClosedXML.Excel;
+using DevExpress.CodeParser;
 
 namespace DSEV.Schemas
 {
@@ -314,8 +318,8 @@ namespace DSEV.Schemas
 
 
 
-        public void 검사일시추출실행(int numberOfResults, int numberOfProducts) => this.테이블.검사일시추출(numberOfResults, numberOfProducts);
-
+        public List<string> 검사일시추출실행(int numberOfResults, int numberOfProducts) => this.테이블.검사일시추출(numberOfResults, numberOfProducts);
+        public void 알앤알문서작성(List<string> filePath, List<decimal> OffsetSettings) => this.테이블.알앤알문서작성(filePath, OffsetSettings);
     }
 
 
@@ -511,11 +515,10 @@ namespace DSEV.Schemas
 
 
         //반복작업을 피하기 위해 추가 For R&R
-
-        public void 검사일시추출(int numberOfResults, int numberOfProducts)
+        public List<String> 검사일시추출(int numberOfResults, int numberOfProducts)
         {
             Debug.WriteLine("추출시작");
-            
+            List<string> filePath= new List<string>();
 
             DateTime today = DateTime.Today;
 
@@ -560,24 +563,239 @@ namespace DSEV.Schemas
                     // CSV 파일 경로
                     var csvFilePath = $"C:\\IVM\\RandR\\GageR&R_{sheetnum}_{DateTime.Now.ToString("yyMMddHHmmss")}.csv";
 
+                    
                     // CSV 파일 쓰기
                     using (var writer = new StreamWriter(csvFilePath, false, System.Text.Encoding.UTF8))
                     {
                         foreach (var row in transposedResults)
                         {
+                            //왼쪽부터 오른쪽으로 측정결과값 순서변경
+                            row.Reverse();
+
                             writer.WriteLine(string.Join(",", row));
                         }
                     }
 
+                    if (filePath.Contains(csvFilePath)) continue;
 
+                    filePath.Add(csvFilePath);
                 }
+
                 sheetnum--;
             }
 
             Debug.WriteLine("추출끝");
-            return;
+            return filePath;
         }
 
+        public void 알앤알문서작성(List<string> filePath2, List<decimal> OffsetSettings)
+        {
+            // 파일 경로를 오름차순으로 정렬
+            filePath2.Sort();
+
+            // 붙여넣기 시작 위치를 정의 (B5, P5, AD5, AR5, BF5)
+            var startPositions = new List<string> { "B5", "P5", "AD5", "AR5", "BF5" };
+
+            // 결과 파일 경로
+            string outputFilePath = "C:\\IVM\\DataAnalysis_test.xlsx";
+
+            // 결과 파일이 이미 열려 있는지 확인
+            if (!IsFileAvailable(outputFilePath))
+            {
+                Console.WriteLine($"결과 파일 '{outputFilePath}'이(가) 열려 있으므로 작업을 수행할 수 없습니다.");
+                Global.오류로그("Data Analysis", "File Read Error", $"파일 '{outputFilePath}'이(가) 열려 있으므로 작업을 수행할 수 없습니다.", true);
+                return;
+            }
+
+            try
+            {
+                // ClosedXML을 사용해 엑셀 파일에 데이터 복사 및 붙여넣기
+                using (var workbook = new XLWorkbook(outputFilePath))  // 기존 양식이 있는 파일 열기
+                {
+                    // 첫 번째 워크시트 또는 새로 추가
+                    var worksheet = workbook.Worksheets.FirstOrDefault() ?? workbook.Worksheets.Add("Result");
+
+                    // 파일 경로의 수가 startPositions의 수를 넘지 않는지 확인
+                    if (filePath2.Count > startPositions.Count)
+                    {
+                        throw new Exception("파일 경로의 개수가 시작 위치보다 많습니다. 경로 개수는 5개를 초과할 수 없습니다.");
+                    }
+
+                    // 여러 파일에 대해 작업
+                    for (int fileIndex = 0; fileIndex < filePath2.Count; fileIndex++)
+                    {
+                        // 현재 파일 경로
+                        string sourceFilePath = filePath2[fileIndex];
+
+                        // 소스 파일이 사용 중인지 확인
+                        if (!IsFileAvailable(sourceFilePath))
+                        {
+                            Console.WriteLine($"소스 파일 '{sourceFilePath}'이(가) 열려 있으므로 작업을 수행할 수 없습니다.");
+                            Global.오류로그("Data Analysis", "File Read Error", $"파일 '{sourceFilePath}'이(가) 열려 있으므로 작업을 수행할 수 없습니다.", true);
+                            continue;  // 파일이 열려 있을 경우 다음 파일로 진행
+                        }
+
+                        try
+                        {
+                            // 원본 데이터를 저장할 리스트
+                            var data = new List<List<string>>();
+
+                            // 원본 파일에서 데이터를 읽기
+                            using (var reader = new StreamReader(sourceFilePath))
+                            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                            {
+                                // 데이터를 읽어서 저장
+                                while (csv.Read())
+                                {
+                                    var row = new List<string>();
+                                    for (int i = 0; i < csv.Parser.Count; i++)
+                                    {
+                                        row.Add(csv.GetField(i));  // 데이터를 문자열로 가져옴
+                                    }
+                                    data.Add(row);  // 각 행을 리스트에 저장
+                                }
+                            }
+
+                            // 각 파일의 시작 위치 가져오기 (B5, P5, AD5, AR5, BF5)
+                            string startPosition = startPositions[fileIndex];
+
+                            // 시작 위치에서 행과 열 번호를 추출
+                            var cell = worksheet.Cell(startPosition);
+                            int startRow = cell.Address.RowNumber;  // 행 번호
+                            int startCol = cell.Address.ColumnNumber;  // 열 번호
+
+                            // 데이터를 복사하여 붙여넣기
+                            for (int i = 0; i < data.Count; i++)  // 행 루프
+                            {
+                                for (int j = 0; j < data[i].Count; j++)  // 열 루프
+                                {
+                                    // 숫자로 변환 가능한지 확인하고 숫자 형식으로 입력
+                                    if (double.TryParse(data[i][j], out double numericValue))
+                                    {
+                                        worksheet.Cell(startRow + i, startCol + j).Value = numericValue;  // 숫자로 입력
+                                    }
+                                    else
+                                    {
+                                        worksheet.Cell(startRow + i, startCol + j).Value = data[i][j];  // 문자열로 입력
+                                    }
+                                }
+                            }
+                        }
+                        catch (IOException ex)
+                        {
+                            // 파일이 다른 프로세스에서 사용 중인 경우 오류 처리
+                            Console.WriteLine($"파일 '{sourceFilePath}'을(를) 처리하는 동안 오류 발생: {ex.Message}");
+                        }
+                    }
+
+                    // OffsetSettings 데이터를 BZ5부터 1열로 붙여넣기
+                    int offsetStartRow = 5;  // BZ5부터 시작
+                    int offsetCol = worksheet.Cell("BZ5").Address.ColumnNumber;  // BZ열의 열 번호
+
+                    for (int i = 0; i < OffsetSettings.Count; i++)
+                    {
+                        worksheet.Cell(offsetStartRow + i, offsetCol).Value = OffsetSettings[i];
+                    }
+
+                    // 기존 양식이 있는 엑셀 파일에 데이터를 추가하고 저장
+                    workbook.SaveAs(outputFilePath);
+                }
+
+                Console.WriteLine($"Data copied and saved to {outputFilePath}");
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine($"결과 파일 '{outputFilePath}'을(를) 저장하는 동안 오류 발생: {ex.Message}");
+            }
+        }
+
+
+
+        // 파일이 사용 가능한지 확인하는 함수
+        private bool IsFileAvailable(string filePath)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    // 파일에 접근 가능하면 true 반환
+                    return true;
+                }
+            }
+            catch (IOException)
+            {
+                // 파일이 사용 중이면 false 반환
+                return false;
+            }
+        }
+
+
+
+
+
+
+        static Dictionary<string, (double Average, double Min, double Max)> CalculateStatistics(Dictionary<string, List<double>> allData)
+        {
+            var result = new Dictionary<string, (double Average, double Min, double Max)>();
+
+            foreach (var column in allData.Keys)
+            {
+                var values = allData[column];
+                double average = values.Average();
+                double min = values.Min();
+                double max = values.Max();
+
+                // 통계 결과 저장
+                result[column] = (Average: average, Min: min, Max: max);
+            }
+
+            return result;
+        }
+
+        static void SaveResultsToCsv(List<Dictionary<string, string>> originalData, Dictionary<string, (double Average, double Min, double Max)> statistics, string filePath)
+        {
+            using (var writer = new StreamWriter(filePath))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                // 헤더 작성
+                if (originalData.Count > 0)
+                {
+                    foreach (var header in originalData[0].Keys)
+                    {
+                        csv.WriteField(header);
+                    }
+                    csv.NextRecord();
+
+                    // 원본 데이터 작성
+                    foreach (var record in originalData)
+                    {
+                        foreach (var value in record.Values)
+                        {
+                            csv.WriteField(value);
+                        }
+                        csv.NextRecord();
+                    }
+                }
+
+                // 통계 결과 작성
+                csv.WriteField("Column");
+                csv.WriteField("Average");
+                csv.WriteField("Min");
+                csv.WriteField("Max");
+                csv.NextRecord();
+
+                foreach (var entry in statistics)
+                {
+                    csv.WriteField(entry.Key);
+                    csv.WriteField(entry.Value.Average);
+                    csv.WriteField(entry.Value.Min);
+                    csv.WriteField(entry.Value.Max);
+                    csv.NextRecord();
+                }
+            }
+
+            Console.WriteLine($"Results saved to {filePath}");
+        }
 
         // 리스트 전치 함수(행과열바꾸기)
         public static List<List<decimal>> TransposeList(List<List<decimal>> original)
