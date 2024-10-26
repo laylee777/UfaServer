@@ -46,11 +46,6 @@ namespace DSEV.Schemas
             this.Add(카메라구분.Cam02, this.카메라2);
             this.Add(카메라구분.Cam03, this.카메라3);
 
-            //this.카메라2 = new HikeGigE() { 구분 = 카메라구분.Cam02, 코드 = "DA0668338", 가로 = 4096, 세로 = 20400 };
-            //this.카메라3 = new HikeGigE() { 구분 = 카메라구분.Cam03, 코드 = "DA0668336", 가로 = 4096, 세로 = 20400, ReverseX = true };
-            //this.Add(카메라구분.Cam02, this.카메라2);
-            //this.Add(카메라구분.Cam03, this.카메라3);
-
             // 카메라 설정 저장정보 로드
             그랩장치 정보;
             List<그랩장치> 자료 = Load();
@@ -70,6 +65,7 @@ namespace DSEV.Schemas
             foreach (그랩장치 장치 in this.Values)
                 if (장치.GetType() == typeof(EuresysLink))
                     장치.Init();
+
             // GigE 카메라 초기화
             List<CCameraInfo> 카메라들 = new List<CCameraInfo>();
             Int32 nRet = CSystem.EnumDevices(CSystem.MV_GIGE_DEVICE, ref 카메라들);// | CSystem.MV_USB_DEVICE

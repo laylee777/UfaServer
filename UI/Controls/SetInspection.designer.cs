@@ -50,6 +50,7 @@ namespace DSEV.UI.Controls
             this.col최대값 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col보정값 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col교정값 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col마진값 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col측정값 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col실측값 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ｅ교정계산 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
@@ -65,7 +66,7 @@ namespace DSEV.UI.Controls
             this.e모델선택 = new DevExpress.XtraEditors.LookUpEdit();
             this.모델자료Bind = new System.Windows.Forms.BindingSource(this.components);
             this.b설정저장 = new DevExpress.XtraEditors.SimpleButton();
-            this.col마진값 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col자동오프셋여부 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.GridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.검사설정Bind)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridView1)).BeginInit();
@@ -122,7 +123,8 @@ namespace DSEV.UI.Controls
             this.col마진값,
             this.col측정값,
             this.col실측값,
-            this.col검사여부});
+            this.col검사여부,
+            this.col자동오프셋여부});
             this.GridView1.FooterPanelHeight = 21;
             this.GridView1.GridControl = this.GridControl1;
             this.GridView1.GroupRowHeight = 21;
@@ -263,6 +265,17 @@ namespace DSEV.UI.Controls
             this.col교정값.Name = "col교정값";
             this.col교정값.Visible = true;
             this.col교정값.VisibleIndex = 10;
+            // 
+            // col마진값
+            // 
+            this.col마진값.AppearanceHeader.Options.UseTextOptions = true;
+            this.col마진값.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.col마진값.DisplayFormat.FormatString = "{0:#,0.000000000;;#}";
+            this.col마진값.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.col마진값.FieldName = "마진값";
+            this.col마진값.Name = "col마진값";
+            this.col마진값.Visible = true;
+            this.col마진값.VisibleIndex = 13;
             // 
             // col측정값
             // 
@@ -427,16 +440,14 @@ namespace DSEV.UI.Controls
             this.b설정저장.TabIndex = 0;
             this.b설정저장.Text = "설정저장";
             // 
-            // col마진값
+            // col자동오프셋여부
             // 
-            this.col마진값.AppearanceHeader.Options.UseTextOptions = true;
-            this.col마진값.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.col마진값.DisplayFormat.FormatString = "{0:#,0.000000000;;#}";
-            this.col마진값.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.col마진값.FieldName = "마진값";
-            this.col마진값.Name = "col마진값";
-            this.col마진값.Visible = true;
-            this.col마진값.VisibleIndex = 13;
+            this.col자동오프셋여부.AppearanceHeader.Options.UseTextOptions = true;
+            this.col자동오프셋여부.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.col자동오프셋여부.FieldName = "자동오프셋여부";
+            this.col자동오프셋여부.Name = "col자동오프셋여부";
+            this.col자동오프셋여부.Visible = true;
+            this.col자동오프셋여부.VisibleIndex = 15;
             // 
             // SetInspection
             // 
@@ -497,5 +508,6 @@ namespace DSEV.UI.Controls
         private DevExpress.XtraEditors.SimpleButton b측정정보;
         private DevExpress.XtraGrid.Columns.GridColumn col검사명칭;
         private DevExpress.XtraGrid.Columns.GridColumn col마진값;
+        private DevExpress.XtraGrid.Columns.GridColumn col자동오프셋여부;
     }
 }

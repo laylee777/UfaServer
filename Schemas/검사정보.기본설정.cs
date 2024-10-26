@@ -42,9 +42,9 @@ namespace DSEV.Schemas
         Cam10 = 10,
 
 
-        [Description("Cam11(B9)")]
+        [Description("Cam11(B4)")]
         Cam11 = 11,
-        [Description("Cam12(B7)")]
+        [Description("Cam12(B2)")]
         Cam12 = 12,
         [Description("Cam13(j8)")]
         Cam13 = 13,
@@ -60,9 +60,9 @@ namespace DSEV.Schemas
         Cam18 = 18,
         [Description("Cam19(j5)")]
         Cam19 = 19,
-        [Description("Cam20(B1)")]
+        [Description("Cam20(B8)")]
         Cam20 = 20,
-        [Description("Cam21(B3)")]
+        [Description("Cam21(B10)")]
         Cam21 = 21,
         [Description("Cam22(h9)")]
         Cam22 = 22,
@@ -104,9 +104,9 @@ namespace DSEV.Schemas
         Cam40 = 40,
         [Description("Cam41(Line_NoUse)")]
         Cam41 = 41,
-        [Description("Cam42(B10)")]
+        [Description("Cam42(B3)")]
         Cam42 = 42,
-        [Description("Cam43(B8)")]
+        [Description("Cam43(B1)")]
         Cam43 = 43,
         [Description("Cam44(j4)")]
         Cam44 = 44,
@@ -122,9 +122,9 @@ namespace DSEV.Schemas
         Cam49 = 49,
         [Description("Cam50(j1)")]
         Cam50 = 50,
-        [Description("Cam51(B2)")]
+        [Description("Cam51(B7)")]
         Cam51 = 51,
-        [Description("Cam52(B4)")]
+        [Description("Cam52(B9)")]
         Cam52 = 52,
         [Description("Cam53(Line_NoUse)")]
         Cam53 = 53,
@@ -318,21 +318,21 @@ namespace DSEV.Schemas
         ShapeB7B10 = 202,
 
         //B1~B10 위치 측정값
-        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam20, ShapeB1B4, "B1")]
+        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam43, ShapeB1B4, "B1")]
         B1 = 221,
-        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam51, ShapeB1B4, "B2")]
+        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam12, ShapeB1B4, "B2")]
         B2 = 222,
-        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam21, ShapeB1B4, "B3")]
+        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam42, ShapeB1B4, "B3")]
         B3 = 223,
-        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam52, ShapeB1B4, "B4")]
+        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam11, ShapeB1B4, "B4")]
         B4 = 224,
-        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam12, ShapeB7B10, "B7")]
+        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam51, ShapeB7B10, "B7")]
         B7 = 225,
-        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam43, ShapeB7B10, "B8")]
+        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam20, ShapeB7B10, "B8")]
         B8 = 226,
-        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam11, ShapeB7B10, "B9")]
+        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam52, ShapeB7B10, "B9")]
         B9 = 227,
-        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam42, ShapeB7B10, "B10")]
+        [Result(피씨구분.Client2, 검사그룹.CTQ, 결과분류.Detail, 장치구분.Cam21, ShapeB7B10, "B10")]
         B10 = 228,
 
         // 바닥평면도
@@ -671,6 +671,14 @@ namespace DSEV.Schemas
         QrValidate = 7002,
         [Result(피씨구분.Server, 검사그룹.Etc, 결과분류.Summary, 장치구분.QrReader)]
         QrDuplicated = 7003,
+
+        //보정상태 확인
+        [Result(피씨구분.Server, 검사그룹.None, 결과분류.Summary, 장치구분.None)]
+        DatumAPos = 9001,
+        [Result(피씨구분.Client2, 검사그룹.None, 결과분류.Summary, 장치구분.None)]
+        DatumBPos = 9002,
+        [Result(피씨구분.Client2, 검사그룹.None, 결과분류.Summary, 장치구분.None)]
+        DatumCPos = 9003,
     }
 
 
@@ -812,6 +820,7 @@ namespace DSEV.Schemas
             this.Init();
         }
 
+        //추후 수정 필요할 것으로 판단. 일단 안씀.
         public Boolean 교정계산()
         {
             if (this.측정값 <= 0) return false;

@@ -87,5 +87,14 @@ namespace DSEV.Schemas
         }
 
         public 검사정보 GetItem(검사항목 항목) => this.Where(e => e.검사항목 == 항목).FirstOrDefault();
+
+
+        public List<검사항목> GetEnumValues()
+        {
+            // Enum.GetValues를 사용하여 모든 검사항목 enum 값을 배열로 가져옴
+            var enumValues = Enum.GetValues(typeof(검사항목)).Cast<검사항목>().ToList();
+
+            return enumValues;  // 리스트로 변환된 enum 값 반환
+        }
     }
 }

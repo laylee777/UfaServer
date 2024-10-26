@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using System.Windows.Media.Media3D;
 
 namespace DSEV.Schemas
 {
@@ -198,13 +199,15 @@ namespace DSEV.Schemas
     {
         internal override Boolean UseMemoryCopy => true;
         [JsonIgnore]
-        private CCamera Camera = null;
+        internal CCamera Camera = null;
         [JsonIgnore]
-        private CCameraInfo Device;
+        internal CCameraInfo Device;
         [JsonIgnore]
         private cbOutputExdelegate ImageCallBackDelegate;
         [JsonIgnore]
         public Int32 OffsetX { get; set; } = 0;
+        [JsonIgnore]
+        public Int32 OffsetY { get; set; } = 0;
         [JsonIgnore]
         public Boolean ReverseX { get; set; } = false;
         [JsonIgnore]
@@ -241,13 +244,14 @@ namespace DSEV.Schemas
             Int32 nRet = this.Camera.CreateHandle(ref Device);
             if (!그랩제어.Validate($"[{this.구분}] 카메라 초기화에 실패하였습니다.", nRet, true)) return false;
             nRet = this.Camera.OpenDevice();
+
             
             //카메라 예열(Active 늦게 켜져서 트리거 보드 안먹는 현상 방지용)
             그랩제어.Validate($"{this.구분} Active", Camera.StartGrabbing(), true);
             그랩제어.Validate($"{this.구분} Active", Camera.StopGrabbing(), true);
             this.Camera.ClearImageBuffer();
             //카메라 예열완료
-            
+
             if (!그랩제어.Validate($"[{this.구분}] 카메라 연결 실패!", nRet, true)) return false;
             그랩제어.Validate("RegisterImageCallBackEx", this.Camera.RegisterImageCallBackEx(this.ImageCallBackDelegate, IntPtr.Zero), false);
             Global.정보로그(로그영역, "카메라 연결", $"[{this.구분}] 카메라 연결 성공!", false);
@@ -271,6 +275,7 @@ namespace DSEV.Schemas
         {
             base.Close();
             if (this.Camera == null || !this.상태) return true;
+            
             return 그랩제어.Validate($"{this.구분} Close", Camera.CloseDevice(), false);
         }
 
@@ -279,12 +284,73 @@ namespace DSEV.Schemas
             return 그랩제어.Validate($"{this.구분} Stop", Camera.StopGrabbing(), false);
         }
 
-        private void ImageCallBack(IntPtr surfaceAddr, ref MV_FRAME_OUT_INFO_EX frameInfo, IntPtr user)
+        internal virtual void ImageCallBack(IntPtr surfaceAddr, ref MV_FRAME_OUT_INFO_EX frameInfo, IntPtr user)
         {
             this.AcquisitionFinished(surfaceAddr, frameInfo.nWidth, frameInfo.nHeight);
             this.Stop();
         }
+
+        public Boolean TrigForce() => 그랩제어.Validate($"{this.구분} TriggerSoftware", this.Camera.SetCommandValue("TriggerSoftware"), true);
     }
+
+    //하이크 에어리어용
+
+    public class HikeArea : HikeGigE
+    {
+        public HikeArea() : base() { }
+        public HikeArea(카메라구분 카메라) : base() { this.구분 = 카메라; }
+
+        public override Boolean Init()
+        {
+            Boolean r = base.Init();
+
+            this.Camera.SetIntValue("OffsetX", 0);
+            this.Camera.SetIntValue("OffsetY", 0);
+
+            CIntValue valWidth = new CIntValue();
+            this.Camera.GetIntValue("WidthMax", ref valWidth);
+            this.Camera.SetIntValue("Width", valWidth.CurValue);
+
+            CIntValue valHeight = new CIntValue();
+            this.Camera.GetIntValue("HeightMax", ref valHeight);
+            this.Camera.SetIntValue("Height", valHeight.CurValue);
+
+            
+            this.Camera.SetEnumValue("TriggerMode", 1);
+
+
+            if (r)
+            {
+                그랩제어.Validate($"{this.구분} Active", Camera.StartGrabbing(), true);
+                this.Active();
+                Task.Delay(100);
+                this.Camera.ClearImageBuffer();
+                return r;
+            }
+            return r;
+        }
+
+        public override Boolean Active() => TrigForce();
+        internal override void ImageCallBack(IntPtr surfaceAddr, ref MV_FRAME_OUT_INFO_EX frameInfo, IntPtr user)
+        {
+            this.AcquisitionFinished(surfaceAddr, frameInfo.nWidth, frameInfo.nHeight);
+            //this.Stop();
+        }
+
+        public override Boolean Close()
+        {
+            while (this.Images.Count > 0)
+                this.Dispose(this.Images.Dequeue());
+            //return true;
+            
+            if (this.Camera == null || !this.상태) return true;
+            
+            
+            그랩제어.Validate($"{this.구분} StopGrabbing", Camera.StopGrabbing(), true);
+            return 그랩제어.Validate($"{this.구분} Close", Camera.CloseDevice(), false);
+        }
+    }
+
 
     public class EuresysLink : 그랩장치
     {

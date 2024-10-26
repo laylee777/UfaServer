@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using static DSEV.Global;
 
 
@@ -120,6 +121,7 @@ namespace DSEV.Schemas
                 정보.검사설정.Load(자료);
                 정보.검사설정.Save();
                 this.검사설정변경?.Invoke();
+                Global.정보로그(검사설정.로그영역.GetString(), "SettingSave", "Client Data Save Complete", true);
                 return true;
             }
             catch (Exception ex)
@@ -128,6 +130,14 @@ namespace DSEV.Schemas
                 return false;
             }
         }
+
+        public Boolean 설정전송() =>
+            this.자료전송(new Data()
+            {
+                명령구분 = 명령구분.검사설정,
+                검사번호 = Global.모델자료.선택모델.모델번호,
+                전송자료 = JsonEncoding(Global.모델자료.선택모델.검사설정.ToList())
+            });
 
         private void CTQ촬영완료전달()
         {

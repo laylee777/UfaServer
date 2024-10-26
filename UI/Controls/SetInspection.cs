@@ -103,7 +103,15 @@ namespace DSEV.UI.Controls
             검사설정 설정 = this.검사설정;
             if (설정 == null) return;
             if (!Utils.Confirm(this.FindForm(), 번역.저장확인)) return;
-            if (설정.Save()) Global.정보로그(검사설정.로그영역.GetString(), 번역.설정저장, 번역.저장완료, true);
+            if (설정.Save())
+            {
+                Global.정보로그(검사설정.로그영역.GetString(), 번역.설정저장, 번역.저장완료, true);
+                if (!Global.피씨통신.정상여부) Global.경고로그(검사설정.로그영역.GetString(), 번역.설정저장, "PC가 연결되어있지 않습니다. PC와 연결 후 다시 저장하세요.", true);
+                else if (!Global.피씨통신.설정전송())
+                    Global.오류로그(검사설정.로그영역.GetString(), 번역.설정저장, "Client로 설정자료 전송에 실패하였습니다. PC연결을 확인 해 보시기 바랍니다.", true);
+            }
+
+            //if (설정.Save()) Global.정보로그(검사설정.로그영역.GetString(), 번역.설정저장, 번역.저장완료, true);
         }
 
         private void 도구설정(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -115,7 +123,9 @@ namespace DSEV.UI.Controls
         private void 검사설정변경()
         {
             if (this.InvokeRequired) { this.BeginInvoke(new Action(검사설정변경)); return; }
+
             this.GridView1.RefreshData();
+            this.GridView1.Invalidate();
         }
 
         private void 수동검사알림(카메라구분 카메라, 검사결과 결과)

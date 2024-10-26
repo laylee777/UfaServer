@@ -35,9 +35,12 @@ namespace DSEV.UI.Controls
 
         private void B마스터샘플피팅_Click(object sender, EventArgs e)
         {
-            //!Utils.Confirm(this, 번역.종료확인, Localization.확인.GetString());
-            //if (!e.Cancel) this.CloseForm();
-            //throw new NotImplementedException();
+            List<string> filePath = Global.검사자료.검사일시추출실행((int)this.e반복횟수.Value, (int)this.e제품갯수.Value);
+            List<decimal> OffsetSettings = new List<decimal>();
+            Global.모델자료.선택모델.검사설정.ForEach(x => OffsetSettings.Add(x.보정값));
+
+            string 저장경로 = Global.검사자료.알앤알문서작성(filePath, OffsetSettings);
+            Boolean r = Global.검사자료.오프셋연산및적용(저장경로);
         }
 
         private void B데이터추출_Click(object sender, EventArgs e)
@@ -46,7 +49,8 @@ namespace DSEV.UI.Controls
             List<decimal> OffsetSettings = new List<decimal>();
             Global.모델자료.선택모델.검사설정.ForEach(x => OffsetSettings.Add(x.보정값));
             
-            Global.검사자료.알앤알문서작성(filePath, OffsetSettings);
+            string 저장경로 =  Global.검사자료.알앤알문서작성(filePath, OffsetSettings);
+            //Boolean r = Global.검사자료.오프셋연산및적용(저장경로);
         }
 
         public void Close() { }

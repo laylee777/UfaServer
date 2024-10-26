@@ -18,12 +18,9 @@ namespace DSEV.Schemas
     public class MES통신
     {
         public event EventHandler<string> 검사진행요청;
-
         public MES통신() { }
-
         public String 로그영역 = "MES통신";
         private MESClient 통신장치;
-
 
         public Boolean Init() {
             try
@@ -57,7 +54,6 @@ namespace DSEV.Schemas
                         return;
                     }
                     Global.오류로그(로그영역, "MES통신", $"불량품 투입됨", true);
-
                 }
                 else if (e.MSG_ID == "REP_PROCESS_END")
                 {
@@ -69,7 +65,6 @@ namespace DSEV.Schemas
                     Global.정보로그(로그영역, "MES통신", $"LINKTEST 수신완료", true);
                     return;
                 }
-
             }
             catch(Exception ex)
             {
@@ -81,27 +76,14 @@ namespace DSEV.Schemas
         public void Start() => this.통신장치?.Start();
         public void Stop() => this.통신장치?.Stop();
 
-
-
         public Boolean 자료송신(MESSAGE messge)
         {
             if (!this.통신장치.연결여부) return false;
             if (this.통신장치.Send(XmlMessageConverter.GenerateXmlMessage(messge))) return true;
-
             Global.오류로그(로그영역, "자료전송", $"[REQ_PROCESS_START] 자료전송에 실패하였습니다.", true);
             return false;
         }
-
-
-
-
-
-
-
-
     }
-
-
 
     public class MESClient
     {
@@ -110,10 +92,8 @@ namespace DSEV.Schemas
         public Boolean 동작여부 { get; set; } = false;
         public String 로그영역 { get; set; } = "MES통신";
         public virtual Boolean 연결여부 { get => this.Connected(); }
-
         public TcpClient 통신소켓 = null;
         public NetworkStream Stream { get => 통신소켓?.GetStream(); }
-
 
         //string xmlData = GenerateXmlMessage("REQ_PROCESS_START", "EQPID", "20240304093001553", "F00395AB231;F00395AB231");
 
@@ -149,15 +129,11 @@ namespace DSEV.Schemas
             this.통신소켓 = null;
         }
 
-
         private Int32 통신연결간격 = 3;
         private DateTime 통신연결시간 = DateTime.Today;
         
-        
         public Boolean Connect()
         {
-            //if (Global.환경설정.동작구분 == 동작구분.LocalTest) return false;
-
             try
             {
                 if ((DateTime.Now - 통신연결시간).TotalSeconds < 통신연결간격) return false;
@@ -176,9 +152,6 @@ namespace DSEV.Schemas
             }
             return false;
         }
-
-
-
 
         public List<Byte> ReceiveBuffer = new List<Byte>();
         public void Read()
@@ -216,7 +189,6 @@ namespace DSEV.Schemas
             }
         }
 
-
         public Boolean Send(String data)
         {
             if (!this.연결여부) return false;
@@ -234,9 +206,6 @@ namespace DSEV.Schemas
                 return false;
             }
         }
-
-
-
     }
 
 

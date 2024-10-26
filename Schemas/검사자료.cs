@@ -17,6 +17,7 @@ using System.IO;
 using System.Globalization;  // 여기에 추가
 using ClosedXML.Excel;
 using DevExpress.CodeParser;
+using DevExpress.XtraBars.Docking2010.Views.Widget;
 
 namespace DSEV.Schemas
 {
@@ -315,11 +316,9 @@ namespace DSEV.Schemas
         }
         #endregion
 
-
-
-
         public List<string> 검사일시추출실행(int numberOfResults, int numberOfProducts) => this.테이블.검사일시추출(numberOfResults, numberOfProducts);
-        public void 알앤알문서작성(List<string> filePath, List<decimal> OffsetSettings) => this.테이블.알앤알문서작성(filePath, OffsetSettings);
+        public string 알앤알문서작성(List<string> filePath, List<decimal> OffsetSettings) => this.테이블.알앤알문서작성(filePath, OffsetSettings);
+        public Boolean 오프셋연산및적용(string filePath) => this.테이블.오프셋연산및적용(filePath);
     }
 
 
@@ -484,7 +483,7 @@ namespace DSEV.Schemas
             if (!Global.큐알검증.중복체크 || indexs.Length < 1) return result;
             DateTime 시작 = DateTime.Today.AddDays(-Global.큐알검증.중복일수);
             String Sql = $"SELECT * FROM qr_duplicated('{qrcode}', ARRAY[{String.Join(",", indexs)}]::integer[], '{시작.ToString("yyyy-MM-dd")}');";
-            //Debug.WriteLine(Sql, "중복쿼리");
+            Debug.WriteLine(Sql, "중복쿼리");
             try
             {
                 DateTime sday = new DateTime(시작.Year, 시작.Month, 시작.Day);
@@ -588,7 +587,7 @@ namespace DSEV.Schemas
             return filePath;
         }
 
-        public void 알앤알문서작성(List<string> filePath2, List<decimal> OffsetSettings)
+        public string 알앤알문서작성(List<string> filePath2, List<decimal> OffsetSettings)
         {
             // 파일 경로를 오름차순으로 정렬
             filePath2.Sort();
@@ -604,7 +603,7 @@ namespace DSEV.Schemas
             {
                 Console.WriteLine($"결과 파일 '{outputFilePath}'이(가) 열려 있으므로 작업을 수행할 수 없습니다.");
                 Global.오류로그("Data Analysis", "File Read Error", $"파일 '{outputFilePath}'이(가) 열려 있으므로 작업을 수행할 수 없습니다.", true);
-                return;
+                return null;
             }
 
             try
@@ -688,17 +687,19 @@ namespace DSEV.Schemas
                         }
                     }
 
-                    // OffsetSettings 데이터를 BZ5부터 1열로 붙여넣기
-                    int offsetStartRow = 5;  // BZ5부터 시작
-                    int offsetCol = worksheet.Cell("BZ5").Address.ColumnNumber;  // BZ열의 열 번호
+                    // OffsetSettings 데이터를 CJ5부터 1열로 붙여넣기
+                    int offsetStartRow = 5;  // CJ5부터 시작
+                    int offsetCol = worksheet.Cell("CJ5").Address.ColumnNumber;  // CJ열의 열 번호
 
                     for (int i = 0; i < OffsetSettings.Count; i++)
                     {
                         worksheet.Cell(offsetStartRow + i, offsetCol).Value = OffsetSettings[i];
                     }
 
+                    string savePath = Path.Combine(Global.환경설정.문서저장, $"DataAnalysis_{DateTime.Now.ToString("yyMMddHHmmss")}.xlsx");
                     // 기존 양식이 있는 엑셀 파일에 데이터를 추가하고 저장
-                    workbook.SaveAs(outputFilePath);
+                    workbook.SaveAs(savePath);
+                    return savePath;
                 }
 
                 Console.WriteLine($"Data copied and saved to {outputFilePath}");
@@ -706,8 +707,10 @@ namespace DSEV.Schemas
             catch (IOException ex)
             {
                 Console.WriteLine($"결과 파일 '{outputFilePath}'을(를) 저장하는 동안 오류 발생: {ex.Message}");
+                return null;
             }
         }
+
 
 
 
@@ -730,6 +733,137 @@ namespace DSEV.Schemas
         }
 
 
+
+
+
+        public Boolean 오프셋연산및적용(string filePath)
+        {
+            var resultList = new List<double>();  // 값을 저장할 리스트
+
+            try
+            {
+                // ClosedXML을 사용해 엑셀 파일 열기
+                using (var workbook = new XLWorkbook(filePath))
+                {
+                    var worksheet = workbook.Worksheets.FirstOrDefault();  // 첫 번째 워크시트 사용
+
+                    if (worksheet == null)
+                    {
+                        throw new Exception("워크시트가 없습니다.");
+                    }
+
+                    // CK5부터 CK145까지의 셀 데이터를 가져오기
+                    for (int row = 5; row <= 94; row++)  // 5행부터 94행까지 반복
+                    {
+                        var cell = worksheet.Cell($"CK{row}");  // CK열의 각 셀
+
+                        
+                        //Debug.WriteLine(cell.Value.ToString());
+                        if (cell.IsEmpty())  // 셀이 비어 있는 경우
+                        {
+                            Debug.WriteLine($"CK{row} 셀이 비어 있습니다.");
+                            resultList.Add(0);  // 기본값(예: 0) 추가
+                        }
+                        else if (cell.TryGetValue(out double value))  // 셀 값이 숫자인 경우
+                        {
+                            resultList.Add(value);  // 값을 리스트에 추가
+                            Debug.WriteLine($"CK{row} 셀 값: {value}");  // 값을 디버그 콘솔에 출력
+                        }
+                        else
+                        {
+                            // 셀의 값을 문자열로 시도해서 숫자로 변환 가능한지 확인
+                            var rawValue = cell.GetString();
+                            if (double.TryParse(rawValue, out double numericValue))
+                            {
+                                resultList.Add(numericValue);  // 변환된 값을 리스트에 추가
+                                Debug.WriteLine($"CK{row} 셀 값: {numericValue} (문자열에서 변환됨)");  // 변환된 값을 출력
+                            }
+                            else
+                            {
+                                Debug.WriteLine($"CK{row} 셀에서 값을 읽지 못했습니다. 값이 숫자가 아닙니다.");
+                            }
+                        }
+                    }
+                }
+
+                //검사설정 = Global.모델자료.검사설정.;
+
+               
+                List<검사항목> 검사항목들 = Global.모델자료.선택모델.검사설정.GetEnumValues();
+
+                //resultList.ForEach(x => Global.모델자료.GetItem(검사항목들());
+
+                for(int i = 0; i < resultList.Count; i++)
+                {
+                    검사정보 정보 = Global.모델자료.선택모델.검사설정.GetItem(검사항목들[i + 1]);
+
+                    if (정보 != null)
+                    {
+                        if(정보.자동오프셋여부) 정보.보정값 = (decimal)resultList[i];
+                    }
+                }
+
+                return true;
+            }
+            catch(Exception e)
+            {
+                Global.오류로그("Calibration", "Auto Calibration Set", $"Calibration Failed.{e.Message}", false);
+                return false;
+            }
+        }
+
+
+
+
+
+
+
+        //public Boolean 오프셋연산및적용(string filePath)
+        //    {
+        //        var resultList = new List<double>();
+
+        //        try
+        //        {
+        //            // ClosedXML을 사용해 엑셀 파일 열기
+        //            using (var workbook = new XLWorkbook(filePath))
+        //            {
+        //                var worksheet = workbook.Worksheets.FirstOrDefault();  // 첫 번째 워크시트 사용
+
+        //                if (worksheet == null)
+        //                {
+        //                    throw new Exception("워크시트가 없습니다.");
+        //                }
+
+        //                // CK5부터 CK145까지의 셀 데이터를 가져오기
+        //                for (int row = 5; row <= 145; row++)  // 5행부터 145행까지 반복
+        //                {
+        //                    var cell = worksheet.Cell($"CK{row}");  // CK열의 각 셀
+
+        //                    if (cell.IsEmpty())  // 셀이 비어 있는 경우
+        //                    {
+        //                        Console.WriteLine($"CK{row} 셀이 비어 있습니다.");
+        //                        resultList.Add(0);  // 기본값(예: 0) 추가
+        //                    }
+        //                    else if (cell.TryGetValue(out double value))  // 셀 값이 숫자인 경우
+        //                    {
+        //                        resultList.Add(value);  // 값을 리스트에 추가
+        //                    }
+        //                    else
+        //                    {
+        //                        Console.WriteLine($"CK{row} 셀에서 값을 읽지 못했습니다. 값이 숫자가 아닙니다.");
+        //                    }
+        //                }
+        //            }
+        //            return true;
+        //        }
+        //        catch
+        //        {
+        //            Global.오류로그("Calibration", "Auto Calibration Set", "Calibration Failed.", false);
+        //            return false;
+        //        }
+
+
+        //    }
 
 
 
